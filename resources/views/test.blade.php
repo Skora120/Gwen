@@ -82,7 +82,13 @@
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-graduation-cap"></i>
-          <span>Pokaż wszystkie</span></a>
+          <span class="font-weight-bold">Pokaż wszystkie</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+          <i class="fas fa-fw fa-graduation-cap"></i>
+          <span class="font-weight-bold">Dodaj przemiot</span></a>
       </li>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -152,7 +158,7 @@
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-meteor"></i>
-          <span>Zobacz wszystkie</span></a>
+          <span class="font-weight-bold">Zobacz wszystkie</span></a>
       </li>
 
 
@@ -438,36 +444,25 @@
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Ostatnie zadania</h6>
                 </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                  </div>
-                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
+
+                <div class="card-body text-center">
+                  <h5 class="card-title">Sed et consectetur</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin purus risus, bibendum dapibus tortor non, hendrerit mattis ligula. Aliquam erat volutpat. Nulla facilisis nunc id odio ullamcorper.</p>
+                  <a href="#" class="btn btn-primary">Przejdź do zadania</a>
                 </div>
+
+                <hr>
+
+                <div class="card-body text-center">
+                <h5 class="card-title">Ut dictum diam quam</h5>
+                <p class="card-text">Sollicitudin sed egestas sit amet, rutrum iaculis mi. Vivamus volutpat eget ipsum eget fringilla. Nam volutpat scelerisque sodales. Aliquam nunc elit, consequat quis posuere condimentum, consequat id tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus nibh libero, auctor in ipsum vitae, laoreet bibendum tellus. Ut dictum diam quam, vitae imperdiet felis gravida quis. Sed et consectetur quam.</p>
+                <a href="#" class="btn btn-primary">Przejdź do zadania</a>
+              </div>
               </div>
             </div>
 
-            <!-- Pie Chart -->
-            <!-- <div class="col-xl-4 col-lg-5"> -->
-              <!-- Approach -->
-             <!--  <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                </div>
-                <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
 
           <div class="row">
@@ -476,36 +471,21 @@
             <div class="col-xl-12 col-lg-12">
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Ostatnie aktywności</h6>
                 </div>
                 <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                  </div>
-                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><small>26min temu...</small><p>Cras justo odio</p></li>
+                    <li class="list-group-item"><small>1h 25minut temu...</small><p>Dapibus ac facilisis in</p></li>
+                    <li class="list-group-item"><small>2h 25minut temu...</small><p>Morbi leo risus</p></li>
+                    <li class="list-group-item"><small>2h 45minut temu...</small><p>Porta ac consectetur ac</p></li>
+                    <li class="list-group-item"><small>3h 5minut temu...</small><p>Vestibulum at eros</p></li>
+                  </ul>
                 </div>
               </div>
             </div>
 
-            <!-- Pie Chart -->
-            <!-- <div class="col-xl-4 col-lg-5"> -->
-              <!-- Approach -->
-             <!--  <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                </div>
-                <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
 
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
 
 
