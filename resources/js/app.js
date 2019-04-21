@@ -12,6 +12,7 @@ require('@fortawesome/fontawesome-free');
 require('datatables.net-bs4');
 
 require('./sb-admin-2.js');
+require('./dropzone.js');
 
 window.Vue = require('vue');
 
