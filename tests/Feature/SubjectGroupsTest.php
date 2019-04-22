@@ -111,4 +111,16 @@ class SubjectGroupsTest extends TestCase
         $this->post('/subjects/join_group', ['code' => $group->code])->assertRedirect($group->path());
         $this->post('/subjects/join_group', ['code' => $group->code])->assertStatus(403);
     }
+
+    /** @test */
+    public function a_lecturer_cannot_join__to_own_subject_group()
+    {
+        $user = factory('App\User')->create();
+        $this->be($user);
+
+        $subject = factory('App\Subject')->create(['user_id' => $user->id]);
+        $group = factory('App\SubjectGroup')->create(['subject_id' => $subject->id]);
+
+        $this->post('/subjects/join_group', ['code' => $group->code])->assertStatus(403);
+    }
 }

@@ -42,6 +42,9 @@ class SubjectGroupPolicy
      */
     public function join(User $user, SubjectGroup $subjectGroup)
     {
+        if ($user->id == $subjectGroup->subject()->value('user_id'))
+            return false;
+
         $users = $subjectGroup->users()->get();
 
         foreach ($users as $value){
