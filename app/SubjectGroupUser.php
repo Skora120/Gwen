@@ -10,6 +10,11 @@ class SubjectGroupUser extends Model
 
     public function user()
     {
-        $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
+    }
+
+    public function group()
+    {
+        return $this->belongsTo('App\SubjectGroup');
     }
 }

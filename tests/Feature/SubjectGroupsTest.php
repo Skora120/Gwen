@@ -17,7 +17,6 @@ class SubjectGroupsTest extends TestCase
         $user = factory('App\User')->state('lecturer')->create();
         $this->be($user);
         $subject = factory('App\Subject')->create(['user_id' => $user->id]);
-
         $subject_groups = factory('App\SubjectGroup')->create(['subject_id' => $subject->id]);
 
         $this->get($subject->path() . '/' . $subject_groups->id)->assertSee($subject_groups->code);
@@ -65,17 +64,14 @@ class SubjectGroupsTest extends TestCase
     /** @test */
     public function a_lecturer_can_edit_own_subject_group()
     {
-        $this->withoutExceptionHandling();
         $user = factory('App\User')->state('lecturer')->create();
         $this->be($user);
 
-        $subject = factory('App\Subject')->create(['user_id' => $user->id]);
-        $group = factory('App\SubjectGroup')->create(['subject_id' => $subject->id]);
+        $group = factory('App\SubjectGroup')->create(['subject_id' => factory('App\Subject')->create(['user_id' => $user->id])->id]);
 
         $data = ['name' => 'Some Name'];
 
         $this->patch($group->path(), $data);
-
         $this->assertEquals($data['name'], $group->fresh()->name);
     }
 
@@ -97,7 +93,7 @@ class SubjectGroupsTest extends TestCase
         $user = factory('App\User')->create();
         $this->be($user);
 
-        $this->post('/subjects/join_group', ['code' => $group->code])->assertRedirect($group->path());
+        $this->post(route('subject-join'), ['code' => $group->code])->assertRedirect($group->path());
     }
 
     /** @test */
@@ -108,8 +104,8 @@ class SubjectGroupsTest extends TestCase
         $user = factory('App\User')->create();
         $this->be($user);
 
-        $this->post('/subjects/join_group', ['code' => $group->code])->assertRedirect($group->path());
-        $this->post('/subjects/join_group', ['code' => $group->code])->assertStatus(403);
+        $this->post(route('subject-join'), ['code' => $group->code])->assertRedirect($group->path());
+        $this->post(route('subject-join'), ['code' => $group->code])->assertStatus(403);
     }
 
     /** @test */
@@ -121,6 +117,16 @@ class SubjectGroupsTest extends TestCase
         $subject = factory('App\Subject')->create(['user_id' => $user->id]);
         $group = factory('App\SubjectGroup')->create(['subject_id' => $subject->id]);
 
-        $this->post('/subjects/join_group', ['code' => $group->code])->assertStatus(403);
+        $this->post(route('subject-join'), ['code' => $group->code])->assertStatus(403);
+    }
+
+    /** @test */
+    public function a_student_can_visit_his_group()
+    {
+        $user = factory('App\User')->create();
+        $this->be($user);
+        $user_in_group = factory('App\SubjectGroupUser')->create(['user_id' => $user->id]);
+
+        $this->get($user_in_group->group->path())->assertSee($user_in_group->group->code);
     }
 }

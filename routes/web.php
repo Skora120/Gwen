@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/subjects', 'SubjectsController@index');
 Route::post('/subjects', 'SubjectsController@store');
 
-Route::post('/subjects/join_group', 'SubjectGroupUsersController@store');
+Route::post('/subjects/join_group', 'SubjectGroupUsersController@store')->name('subject-join');
 
 Route::get('/subjects/{subject}', 'SubjectsController@show');
 Route::patch('/subjects/{subject}', 'SubjectsController@update');
