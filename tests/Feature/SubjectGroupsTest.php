@@ -89,4 +89,26 @@ class SubjectGroupsTest extends TestCase
 
     }
 
+
+    /** @test */
+    public function a_student_can_join_to_subject_group()
+    {
+        $group = factory('App\SubjectGroup')->create();
+        $user = factory('App\User')->create();
+        $this->be($user);
+
+        $this->post('/subjects/join_group', ['code' => $group->code])->assertRedirect($group->path());
+    }
+
+    /** @test */
+    public function a_student_cannot_join_twice_to_subject_group()
+    {
+        $group = factory('App\SubjectGroup')->create();
+
+        $user = factory('App\User')->create();
+        $this->be($user);
+
+        $this->post('/subjects/join_group', ['code' => $group->code])->assertRedirect($group->path());
+        $this->post('/subjects/join_group', ['code' => $group->code])->assertStatus(403);
+    }
 }

@@ -53,3 +53,14 @@ $factory->define(\App\SubjectGroup::class, function(Faker $faker){
         'code' => \App\SubjectGroup::generateUniqueCode(),
     ];
 });
+
+$factory->define(\App\SubjectGroupUser::class, function(Faker $faker){
+    return [
+        'user_id' => function () {
+            return factory('App\User')->create()->id;
+        },
+        'group_id' => function () {
+        return factory('App\SubjectGroup')->create()->id;
+        },
+    ];
+});

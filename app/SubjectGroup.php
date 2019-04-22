@@ -29,6 +29,11 @@ class SubjectGroup extends Model
         return $this->hasOne(Subject::class, 'id', 'subject_id');
     }
 
+    public function users()
+    {
+        return $this->hasMany('App\SubjectGroupUser', 'group_id', 'id');
+    }
+
     public function path()
     {
         return $this->subject->path() . '/' . $this->id;

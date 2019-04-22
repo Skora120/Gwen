@@ -22,9 +22,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/subjects', 'SubjectsController@index');
 Route::post('/subjects', 'SubjectsController@store');
+
+Route::post('/subjects/join_group', 'SubjectGroupUsersController@store');
+
 Route::get('/subjects/{subject}', 'SubjectsController@show');
 Route::patch('/subjects/{subject}', 'SubjectsController@update');
+Route::post('/subjects/{subject}', 'SubjectGroupController@store');
 
 Route::get('/subjects/{subject}/{group}', 'SubjectGroupController@index');
-Route::post('/subjects/{subject}', 'SubjectGroupController@store');
 Route::patch('/subjects/{subject}/{group}', 'SubjectGroupController@update');

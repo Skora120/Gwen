@@ -34,6 +34,26 @@ class SubjectGroupPolicy
     }
 
     /**
+     * Determine whether the user can join subject groups.
+     *
+     * @param  \App\User $user
+     * @param SubjectGroup $subjectGroup
+     * @return mixed
+     */
+    public function join(User $user, SubjectGroup $subjectGroup)
+    {
+        $users = $subjectGroup->users()->get();
+
+        foreach ($users as $value){
+            if ($value->user_id == $user->id)
+                return false;
+        }
+
+
+        return true;
+    }
+
+    /**
      * Determine whether the user can update the subject group.
      *
      * @param  \App\User  $user
