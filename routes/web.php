@@ -19,3 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::get('/subjects', 'SubjectsController@index');
+Route::post('/subjects', 'SubjectsController@store');
+Route::get('/subjects/{subject}', 'SubjectsController@show');

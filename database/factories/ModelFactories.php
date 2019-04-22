@@ -25,3 +25,21 @@ $factory->define(User::class, function (Faker $faker) {
         'student_id' => $faker->creditCardNumber,
     ];
 });
+
+$factory->define(\App\Subject::class, function(Faker $faker){
+    $name = $faker->name;
+   return [
+      'user_id' => function () {
+        return factory('App\User')->create()->id;
+      },
+       'name' => $name,
+       'description' => $faker->sentence,
+       'slug' => Str::slug($name. '-'. Carbon\Carbon::now()->format('H:i:s')),
+   ] ;
+});
+
+$factory->state(App\User::class, 'lecturer', function() {
+    return [
+        'type' => 1,
+    ];
+});
