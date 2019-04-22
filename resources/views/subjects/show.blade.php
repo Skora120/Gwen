@@ -12,7 +12,26 @@
                         </p>
                     </div>
                 </div>
+                <hr>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{{$subject->path()}}" method="POST">
+                            {{method_field('PATCH')}}
+                            {{csrf_field()}}
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" name="name" value="{{$subject->name}}">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" class="form-control">{{$subject->description}}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
+
+
     </div>
 @endsection

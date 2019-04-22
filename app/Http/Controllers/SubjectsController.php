@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Subject;
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -101,13 +102,31 @@ class SubjectsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param Subject $subject
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subject $subject)
     {
-        //
+        $this->authorize('update', $subject);
+
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+        ]);
+
+        $subject->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'slug' => Str::slug($request->name. '-'. Carbon::now()->format('H:i:s'))
+        ]);
+
+        if($request->isJson()){
+            return response($subject, 201);
+        }
+
+        return redirect($subject->path());
     }
 
     /**

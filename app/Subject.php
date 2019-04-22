@@ -18,4 +18,5 @@ class Subject extends Model
     {
         return ('/subjects/' . $this->slug);
     }
+
 }

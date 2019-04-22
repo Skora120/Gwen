@@ -14,14 +14,13 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_can_register()
     {
-//        $this->withoutExceptionHandling();
-        $password = $this->faker->password;
+        $this->withoutExceptionHandling();
         $data = [
             'name' => $this->faker->name,
             'email' => $this->faker->email,
-            'password' => $password,
-            'password_confirmation' => $password,
-            'student_id' => $this->faker->creditCardNumber
+            'password' => '12345678',
+            'password_confirmation' => '12345678',
+            'student_id' => 11111111
         ];
 
         // Post
@@ -32,6 +31,7 @@ class UserTest extends TestCase
         // Assert that user exists
         $this->assertDatabaseHas('users', [
             'email' => $data['email'],
+            'name' => $data['name'],
         ]);
     }
 }

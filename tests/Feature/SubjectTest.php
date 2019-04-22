@@ -21,7 +21,7 @@ class SubjectTest extends TestCase
 
         $this->post('/subjects',$subject->toArray());
 
-        $this->assertDatabaseHas('subjects', $subject->toArray());
+        $this->assertDatabaseHas('subjects', ['name' => $subject->name, 'description' => $subject->description]);
     }
 
     /** @test */
@@ -54,7 +54,7 @@ class SubjectTest extends TestCase
         $subject = factory('App\Subject')->create(['user_id' => auth()->id()]);
 
 
-        $this->get('/subjects')->assertSee($subject->name)->assertSee($subject->description);
+        $this->get('/subjects')->assertSee($subject->description);
     }
 
     /** @test */
@@ -64,11 +64,11 @@ class SubjectTest extends TestCase
         $this->be($lecturer);
 
         $subject = factory('App\Subject')->create(['user_id' => auth()->id()]);
-        $this->get($subject->path())->assertSee($subject->name)->assertSee($subject->description);
+        $this->get($subject->path())->assertSee($subject->description);
 
         $student = factory('App\User')->create();
         $this->be($student);
-        $this->get($subject->path())->assertSee($subject->name)->assertSee($subject->description);
+        $this->get($subject->path())->assertSee($subject->description);
 
     }
 
@@ -80,7 +80,38 @@ class SubjectTest extends TestCase
 
     }
 
+    /** @test */
+    public function an_owner_can_modify_subject()
+    {
+        $this->withoutExceptionHandling();
+        $lecturer = factory('App\User')->state('lecturer')->create();
+        $this->be($lecturer);
 
+        $subject = factory('App\Subject')->create(['user_id' => auth()->id()]);
+
+        $data = ['name' => 'Some Title', 'description' => 'Some Description'];
+
+        $this->patch($subject->path(), $data);
+        $this->get($subject->fresh()->path())->assertSee($data['name'])->assertSee($data['description']);
+    }
+
+    /** @test */
+    public function an_unauthenticated_user_cannot_modify_subject()
+    {
+        $lecturer = factory('App\User')->state('lecturer')->create();
+        $this->be($lecturer);
+
+        $subject = factory('App\Subject')->create();
+
+        $data = ['name' => 'Some Title', 'description' => 'Some Description'];
+
+        $this->patch($subject->path(), $data)->assertStatus(403);
+        $subject = $subject->fresh();
+
+        $this->get($subject->path())->assertDontSee($data['description']);
+        $this->get($subject->path())->assertSee($subject->description);
+
+    }
 
 
 }
