@@ -29,6 +29,23 @@
                         </form>
                     </div>
                 </div>
+
+                <hr>
+
+                <div class="card">
+                    <div class="card-header">Create subject group</div>
+                    <div class="card-body">
+                        <form action="{{$subject->path()}}" method="POST">
+                            {{csrf_field()}}
+                            <div class="form-group">
+                                <label for="name">Group Name</label>
+                                <input type="text" class="form-control" name="name">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
 

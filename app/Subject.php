@@ -19,4 +19,9 @@ class Subject extends Model
         return ('/subjects/' . $this->slug);
     }
 
+    public function subject_groups()
+    {
+        return $this->hasMany(SubjectGroup::class);
+    }
+
 }

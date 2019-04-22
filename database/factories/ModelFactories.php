@@ -43,3 +43,13 @@ $factory->state(App\User::class, 'lecturer', function() {
         'type' => 1,
     ];
 });
+
+$factory->define(\App\SubjectGroup::class, function(Faker $faker){
+    return [
+        'subject_id' => function () {
+            return factory('App\Subject')->create()->id;
+        },
+//        'code' => $faker->postcode, //
+        'code' => \App\SubjectGroup::generateUniqueCode(),
+    ];
+});
