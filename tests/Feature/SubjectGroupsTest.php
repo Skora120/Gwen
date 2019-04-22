@@ -14,7 +14,6 @@ class SubjectGroupsTest extends TestCase
     /** @test */
     public function a_lecturer_can_see_subject_group()
     {
-        $this->withoutExceptionHandling();
         $user = factory('App\User')->state('lecturer')->create();
         $this->be($user);
         $subject = factory('App\Subject')->create(['user_id' => $user->id]);
@@ -63,5 +62,31 @@ class SubjectGroupsTest extends TestCase
         $this->post($subject->path(), [])->assertStatus(403);
     }
 
+    /** @test */
+    public function a_lecturer_can_edit_own_subject_group()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory('App\User')->state('lecturer')->create();
+        $this->be($user);
+
+        $subject = factory('App\Subject')->create(['user_id' => $user->id]);
+        $group = factory('App\SubjectGroup')->create(['subject_id' => $subject->id]);
+
+        $data = ['name' => 'Some Name'];
+
+        $this->patch($group->path(), $data);
+
+        $this->assertEquals($data['name'], $group->fresh()->name);
+    }
+
+    /** @test */
+    public function an_unauthorized_user_cannot_edit__subject_group()
+    {
+        $this->be(factory('App\User')->create());
+        $group = factory('App\SubjectGroup')->create();
+
+        $this->patch($group->path(), [])->assertStatus(403);
+
+    }
 
 }

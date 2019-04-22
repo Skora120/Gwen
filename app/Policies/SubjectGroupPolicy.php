@@ -42,7 +42,7 @@ class SubjectGroupPolicy
      */
     public function update(User $user, SubjectGroup $subjectGroup)
     {
-        //
+        return $subjectGroup->subject->user_id == $user->id;
     }
 
     /**

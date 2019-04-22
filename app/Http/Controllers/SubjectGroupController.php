@@ -68,7 +68,7 @@ class SubjectGroupController extends Controller
             return response($group, 201);
         }
 
-        return redirect($subject->path() . '/' . $group->id);
+        return redirect($group->path());
     }
 
     /**
@@ -96,13 +96,28 @@ class SubjectGroupController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param SubjectGroup $group
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subject $subject, SubjectGroup $group)
     {
-        //
+        $this->authorize('update', $group);
+
+        $request->validate([
+            'name' => 'max:255',
+        ]);
+
+        $group->update([
+            'name' => $request->name,
+        ]);
+
+        if($request->isJson()){
+            return response($group, 201);
+        }
+
+        return redirect($group->path());
     }
 
     /**

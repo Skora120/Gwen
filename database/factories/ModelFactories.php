@@ -49,7 +49,7 @@ $factory->define(\App\SubjectGroup::class, function(Faker $faker){
         'subject_id' => function () {
             return factory('App\Subject')->create()->id;
         },
-//        'code' => $faker->postcode, //
+        'name' => $faker->domainWord,
         'code' => \App\SubjectGroup::generateUniqueCode(),
     ];
 });

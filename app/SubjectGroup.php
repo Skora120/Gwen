@@ -28,4 +28,9 @@ class SubjectGroup extends Model
     {
         return $this->hasOne(Subject::class, 'id', 'subject_id');
     }
+
+    public function path()
+    {
+        return $this->subject->path() . '/' . $this->id;
+    }
 }
