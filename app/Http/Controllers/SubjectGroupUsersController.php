@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Subject;
 use App\SubjectGroup;
 use App\SubjectGroupUser;
 use Illuminate\Http\Request;

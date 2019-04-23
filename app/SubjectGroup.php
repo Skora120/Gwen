@@ -34,6 +34,16 @@ class SubjectGroup extends Model
         return $this->hasMany('App\SubjectGroupUser', 'group_id', 'id');
     }
 
+    public function owner()
+    {
+        return $this->subject->user;
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Task', 'group_id', 'id');
+    }
+
     public function path()
     {
         return $this->subject->path() . '/' . $this->id;

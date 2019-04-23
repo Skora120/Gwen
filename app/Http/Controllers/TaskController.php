@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Subject;
-use Carbon\Carbon;
+use App\SubjectGroup;
+use App\Task;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
-class SubjectsController extends Controller
+class TaskController extends Controller
 {
     public function __construct()
     {
@@ -17,18 +17,13 @@ class SubjectsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Subject $subject
+     * @param SubjectGroup $group
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Subject $subject, SubjectGroup $group)
     {
-        $subjects = Subject::where('user_id', auth()->id())->get();
-
-        if(request()->isJson()){
-            return $subjects;
-        }
-
-
-        return view('subjects.index', ['subjects' => $subjects]);
+        return response($group->tasks);
     }
 
     /**
@@ -45,46 +40,58 @@ class SubjectsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
+     * @param Subject $subject
+     * @param SubjectGroup $group
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store(Request $request)
+    public function store(Request $request, Subject $subject, SubjectGroup $group)
     {
-        $this->authorize('create', Subject::class);
+        $this->authorize('create', [Task::class, $group]);
 
         $request->validate([
             'name' => 'required|max:255',
             'description' => 'required',
+            'startDate' => 'date',
+            'deadline' => 'required|date|after:startDate',
         ]);
 
-        $subject = Subject::create([
-            'user_id' => auth()->id(),
+
+        $task = Task::create([
+            'group_id' => $group->id,
             'name' => $request->name,
             'description' => $request->description,
-            'slug' => Str::slug($request->name. '-'. Carbon::now()->format('H:i:s'))
+            'startDate' => $request->startDate,
+            'deadline' => $request->deadline,
         ]);
 
         if($request->isJson()){
-            return response($subject, 201);
+            return response($task, 201);
         }
 
-        return redirect($subject->path());
-
+        return redirect($task->path());
     }
 
     /**
      * Display the specified resource.
      *
      * @param Subject $subject
+     * @param SubjectGroup $group
+     * @param Task $task
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function show(Subject $subject)
+    public function show(Subject $subject, SubjectGroup $group, Task $task)
     {
-        if(\request()->isJson()){
-            return response($subject);
+        $this->authorize('view', [Task::class, $task]);
+
+        $task = $task->getOriginal();
+
+        if (request()->isJson()){
+            return response($task);
         }
 
-        return view('subjects.show', compact('subject'));
+        return response($task);
     }
 
     /**
@@ -101,31 +108,13 @@ class SubjectsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param Subject $subject
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, $id)
     {
-        $this->authorize('update', $subject);
-
-        $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required',
-        ]);
-
-        $subject->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'slug' => Str::slug($request->name. '-'. Carbon::now()->format('H:i:s'))
-        ]);
-
-        if($request->isJson()){
-            return response($subject, 201);
-        }
-
-        return redirect($subject->path());
+        //
     }
 
     /**

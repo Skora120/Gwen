@@ -17,20 +17,13 @@ class SubjectGroupController extends Controller
      * Display a listing of the resource.
      *
      * @param Subject $subject
-     * @param SubjectGroup $group
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return void
      */
-    public function index(Subject $subject, SubjectGroup $group)
+    public function index(Subject $subject)
     {
-        $this->authorize('view', $group);
 
-        if(request()->isJson()){
-            return response($group);
-        }
-
-        return view('subjects_groups.index', ['group' => $group]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -74,12 +67,20 @@ class SubjectGroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Subject $subject
+     * @param SubjectGroup $group
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function show($id)
+    public function show(Subject $subject, SubjectGroup $group)
     {
-        //
+        $this->authorize('view', $group);
+
+        if(request()->isJson()){
+            return response($group);
+        }
+
+        return view('subjects_groups.index', ['group' => $group]);
     }
 
     /**
@@ -97,6 +98,7 @@ class SubjectGroupController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
+     * @param Subject $subject
      * @param SubjectGroup $group
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException

@@ -24,4 +24,9 @@ class Subject extends Model
         return $this->hasMany(SubjectGroup::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

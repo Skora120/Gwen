@@ -60,7 +60,20 @@ $factory->define(\App\SubjectGroupUser::class, function(Faker $faker){
             return factory('App\User')->create()->id;
         },
         'group_id' => function () {
-        return factory('App\SubjectGroup')->create()->id;
+            return factory('App\SubjectGroup')->create()->id;
         },
+    ];
+});
+
+$factory->define(\App\Task::class, function(Faker $faker){
+    $beginTime = $faker->dateTime;
+    return [
+        'group_id' => function () {
+            return factory('App\SubjectGroup')->create()->id;
+        },
+        'name' => $faker->sentence,
+        'description' => $faker->paragraph(3),
+        'startDate'=> $beginTime->format('Y-m-d H:i'),
+        'deadline' => $beginTime->add(\DateInterval::createFromDateString('+2 weeks'))->format('Y-m-d H:i'),
     ];
 });
