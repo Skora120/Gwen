@@ -13,7 +13,6 @@ class Subject extends Model
         return 'slug';
     }
 
-
     public function path()
     {
         return ('/subjects/' . $this->slug);

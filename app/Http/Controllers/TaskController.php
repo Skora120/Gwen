@@ -6,6 +6,7 @@ use App\Subject;
 use App\SubjectGroup;
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TaskController extends Controller
 {
@@ -63,6 +64,7 @@ class TaskController extends Controller
             'description' => $request->description,
             'startDate' => $request->startDate,
             'deadline' => $request->deadline,
+            'slug' => Task::generateUniqueSlug(Str::slug($request->name)),
         ]);
 
         if($request->isJson()){

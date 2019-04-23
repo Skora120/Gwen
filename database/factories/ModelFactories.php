@@ -67,13 +67,15 @@ $factory->define(\App\SubjectGroupUser::class, function(Faker $faker){
 
 $factory->define(\App\Task::class, function(Faker $faker){
     $beginTime = $faker->dateTime;
+    $name = $faker->sentence;
     return [
         'group_id' => function () {
             return factory('App\SubjectGroup')->create()->id;
         },
-        'name' => $faker->sentence,
+        'name' => $name,
         'description' => $faker->paragraph(3),
         'startDate'=> $beginTime->format('Y-m-d H:i'),
         'deadline' => $beginTime->add(\DateInterval::createFromDateString('+2 weeks'))->format('Y-m-d H:i'),
+        'slug' => \App\Task::generateUniqueSlug(Str::slug($name)),
     ];
 });

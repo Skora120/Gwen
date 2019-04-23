@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration
             $table->text('description');
             $table->timestamp('startDate');
             $table->timestamp('deadline')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }
