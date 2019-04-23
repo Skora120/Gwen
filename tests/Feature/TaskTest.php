@@ -81,4 +81,11 @@ class TaskTest extends TestCase
         $this->get($task[0]->group->path() . '/tasks')->assertSee($task[0]->name)->assertSee($task[3]->name);
     }
 
+    /** @test */
+    public function a_lecturer_can_update_task()
+    {
+        // TODO write
+        $this->assertTrue(false);
+    }
+
 }
