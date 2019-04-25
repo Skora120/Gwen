@@ -33,4 +33,7 @@ Route::get('/subjects/{subject}/{group}', 'SubjectGroupController@show');
 Route::get('/subjects/{subject}/{group}/tasks', 'TaskController@index');
 Route::patch('/subjects/{subject}/{group}', 'SubjectGroupController@update');
 Route::post('/subjects/{subject}/{group}', 'TaskController@store');
+
 Route::get('/subjects/{subject}/{group}/{task}', 'TaskController@show');
+Route::patch('/subjects/{subject}/{group}/{task}', 'TaskController@update');
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Subject;
 use App\SubjectGroup;
 use App\Task;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -57,7 +58,6 @@ class TaskController extends Controller
             'deadline' => 'required|date|after:startDate',
         ]);
 
-
         $task = Task::create([
             'group_id' => $group->id,
             'name' => $request->name,
@@ -87,13 +87,12 @@ class TaskController extends Controller
     {
         $this->authorize('view', [Task::class, $task]);
 
-        $task = $task->getOriginal();
-
         if (request()->isJson()){
-            return response($task);
+            return response($task->getOriginal());
         }
 
-        return response($task);
+
+        return view('task.show', ['task' => $task]);
     }
 
     /**
@@ -110,13 +109,45 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param Subject $subject
+     * @param SubjectGroup $group
+     * @param Task $task
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subject $subject, SubjectGroup $group, Task $task)
     {
-        //
+        $this->authorize('update', [Task::class, $group]);
+
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'startDate' => 'date|after:now',
+            'deadline' => 'required|date|after:startDate',
+        ]);
+
+        if ($task->name != $request->name){
+            $task->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'startDate' => $request->startDate,
+                'deadline' => $request->deadline,
+                'slug' => Task::generateUniqueSlug(Str::slug($request->name)),
+            ]);
+        }else{
+            $task->update([
+                'description' => $request->description,
+                'startDate' => $request->startDate,
+                'deadline' => $request->deadline,
+            ]);
+        }
+
+        if($request->isJson()){
+            return response($task->refresh(), 201);
+        }
+
+        return redirect($task->refresh()->path());
     }
 
     /**

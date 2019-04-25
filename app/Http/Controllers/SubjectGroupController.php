@@ -80,7 +80,7 @@ class SubjectGroupController extends Controller
             return response($group);
         }
 
-        return view('subjects_groups.index', ['group' => $group]);
+        return view('subjects_groups.show', ['group' => $group]);
     }
 
     /**

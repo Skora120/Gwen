@@ -38,13 +38,13 @@ class TaskPolicy
     /**
      * Determine whether the user can update the task.
      *
-     * @param  \App\User  $user
-     * @param  \App\Task  $task
+     * @param  \App\User $user
+     * @param SubjectGroup $group
      * @return mixed
      */
-    public function update(User $user, Task $task)
+    public function update(User $user, SubjectGroup $group)
     {
-        //
+        return $user->id == $group->owner()->id;
     }
 
     /**

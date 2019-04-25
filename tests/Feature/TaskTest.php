@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TaskTest extends TestCase
@@ -84,8 +83,27 @@ class TaskTest extends TestCase
     /** @test */
     public function a_lecturer_can_update_task()
     {
-        // TODO write
-        $this->assertTrue(false);
+        $group = factory('App\SubjectGroup')->create();
+        $lecturer = $group->owner();
+        $this->be($lecturer);
+
+        $task = factory('App\Task')->create(['group_id' => $group->id]);
+        $taskUpdated = factory('App\Task')->make(['group_id' => $group->id]);
+
+        $this->patch($task->path(), $taskUpdated->toArray())->assertStatus(302);
+
+        $this->assertDatabaseHas('tasks', $taskUpdated->toArray());
+    }
+
+    /** @test */
+    public function an_unauthorized_user_cannot_update_task()
+    {
+        $this->be(factory('App\User')->create());
+
+        $task = factory('App\Task')->create();
+        $taskUpdated = factory('App\Task')->make();
+
+        $this->patch($task->path(), $taskUpdated->toArray())->assertStatus(403);
     }
 
 }

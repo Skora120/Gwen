@@ -66,7 +66,7 @@ $factory->define(\App\SubjectGroupUser::class, function(Faker $faker){
 });
 
 $factory->define(\App\Task::class, function(Faker $faker){
-    $beginTime = $faker->dateTime;
+    $beginTime = $faker->dateTimeBetween($startDate = 'now', $endDate = '+2 years');
     $name = $faker->sentence;
     return [
         'group_id' => function () {
