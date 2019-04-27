@@ -69,7 +69,6 @@ class SubjectTest extends TestCase
         $student = factory('App\User')->create();
         $this->be($student);
         $this->get($subject->path())->assertSee($subject->description);
-
     }
 
     /** @test */
@@ -77,7 +76,6 @@ class SubjectTest extends TestCase
     {
         $subject = factory('App\Subject')->create();
         $this->get($subject->path())->assertRedirect('/login');
-
     }
 
     /** @test */
@@ -110,8 +108,5 @@ class SubjectTest extends TestCase
 
         $this->get($subject->path())->assertDontSee($data['description']);
         $this->get($subject->path())->assertSee($subject->description);
-
     }
-
-
 }

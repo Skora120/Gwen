@@ -20,20 +20,25 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/subjects', 'SubjectsController@index');
-Route::post('/subjects', 'SubjectsController@store');
+Route::group(['prefix' => '/subjects'],function() {
+    Route::get('/', 'SubjectsController@index');
+    Route::post('/', 'SubjectsController@store');
 
-Route::post('/subjects/join_group', 'SubjectGroupUsersController@store')->name('subject-join');
+    Route::post('/join_group', 'SubjectGroupUsersController@store')->name('subject-join');
 
-Route::get('/subjects/{subject}', 'SubjectsController@show');
-Route::patch('/subjects/{subject}', 'SubjectsController@update');
-Route::post('/subjects/{subject}', 'SubjectGroupController@store');
+    Route::group(['prefix' => '/{subject}'],function() {
+        Route::get('/', 'SubjectsController@show');
+        Route::patch('/', 'SubjectsController@update');
+        Route::post('/', 'SubjectGroupController@store');
 
-Route::get('/subjects/{subject}/{group}', 'SubjectGroupController@show');
-Route::get('/subjects/{subject}/{group}/tasks', 'TaskController@index');
-Route::patch('/subjects/{subject}/{group}', 'SubjectGroupController@update');
-Route::post('/subjects/{subject}/{group}', 'TaskController@store');
-
-Route::get('/subjects/{subject}/{group}/{task}', 'TaskController@show');
-Route::patch('/subjects/{subject}/{group}/{task}', 'TaskController@update');
-
+        Route::group(['prefix' => '/{group}'],function() {
+            Route::get('/', 'SubjectGroupController@show');
+            Route::patch('/', 'SubjectGroupController@update');
+            Route::post('/', 'TaskController@store');
+            Route::get('/tasks', 'TaskController@index');
+            
+            Route::get('/{task}', 'TaskController@show');
+            Route::patch('/{task}', 'TaskController@update');
+        });
+    });
+});
