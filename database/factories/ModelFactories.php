@@ -79,3 +79,16 @@ $factory->define(\App\Task::class, function(Faker $faker){
         'slug' => \App\Task::generateUniqueSlug(Str::slug($name)),
     ];
 });
+
+$factory->define(\App\Submission::class, function(Faker $faker){
+    $user = factory('App\User')->create();
+    $task = factory('App\Task')->create(['group_id' => factory('App\SubjectGroupUser')->create(['user_id' => $user->id])->group_id]);
+    return [
+        'user_id' => $user->id,
+        'task_id' => $task->id,
+        's_comment' => $faker->sentence,
+        'r_comment' => $faker->sentence,
+        'mark' => $faker->numberBetween(0, 5),
+    ];
+});
+

@@ -39,6 +39,10 @@ Route::group(['prefix' => '/subjects'],function() {
             
             Route::get('/{task}', 'TaskController@show');
             Route::patch('/{task}', 'TaskController@update');
+
+            Route::post('/{task}', 'SubmissionController@store');
+//            Route::get('/{task}/', 'SubmissionController@index');
+            Route::get('/{task}/{submission}', 'SubmissionController@show');
         });
     });
 });
