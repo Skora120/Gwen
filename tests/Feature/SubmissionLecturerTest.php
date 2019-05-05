@@ -10,15 +10,24 @@ class SubmissionLecturerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    /** @test */
+    public function an_lecturer_may_view_submission()
     {
-        $response = $this->get('/');
+        $submission = factory('App\Submission')->create();
 
-        $response->assertStatus(200);
+        $lecturer = $submission->task->group->subject->user;
+        $this->be($lecturer);
+
+        $this->get($submission->path())->assertSee($submission->s_comment);
+    }
+
+    /** @test */
+    public function an_unauthorized_user_cannot_see_submission()
+    {
+        $this->be(factory('App\User')->create());
+
+        $submission = factory('App\Submission')->create();
+
+        $this->get($submission->path())->assertDontSee($submission->s_comment);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Subject;
 use App\Task;
 use App\User;
 use App\Submission;
@@ -14,13 +15,14 @@ class SubmissionPolicy
     /**
      * Determine whether the user can view the submission.
      *
-     * @param  \App\User  $user
-     * @param  \App\Submission  $submission
+     * @param  \App\User $user
+     * @param  \App\Submission $submission
+     * @param Subject $subject
      * @return mixed
      */
-    public function view(User $user, Submission $submission)
+    public function view(User $user, Submission $submission, Subject $subject)
     {
-        //
+        return $user->id == $subject->user->id || $submission->user_id == $user->id;
     }
 
     /**

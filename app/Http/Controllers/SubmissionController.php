@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class SubmissionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -47,16 +53,17 @@ class SubmissionController extends Controller
 
         $request->validate([
             's_comment' => 'nullable|max:255',
-            'file' => 'required|between:0,5000|mimes:pdf,zip,cpp',
+            'file' => 'required|between:0,5000|mimetypes:application/pdf,application/zip,text/plain,text/x-c++,text/x-c',
         ]);
 
-        $file = Storage::put('submissions/' . $task->id, $request->file('file'));
+        $file = Storage::putFileAs('submissions/' . $task->id, $request->file('file'), md5($request->file('file') . time()));
 
         $submission = Submission::create([
            'user_id' => auth()->id(),
            'task_id' => $task->id,
             's_comment' => $request->s_comment,
             'file' => $file,
+            'file_extension' => $request->file('file')->getClientOriginalExtension()
         ]);
 
         if($request->isJson()){
@@ -74,10 +81,17 @@ class SubmissionController extends Controller
      * @param Task $task
      * @param Submission $submission
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Subject $subject, SubjectGroup $group, Task $task, Submission $submission)
     {
-        return response($submission);
+        $this->authorize('view', [$submission, $subject]);
+
+        if(\request()->isJson()){
+            return response($submission);
+        }
+
+        return view('submissions.show', compact('submission'));
     }
 
     /**
@@ -112,5 +126,20 @@ class SubmissionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Download file from submission
+     *
+     * @param Subject $subject
+     * @param SubjectGroup $group
+     * @param Task $task
+     * @param Submission $submission
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @throws \Exception
+     */
+    public function download(Subject $subject, SubjectGroup $group, Task $task, Submission $submission)
+    {
+        return response()->download(storage_path('app/' . $submission->file),   bin2hex(random_bytes(2)) . '.'. $submission->file_extension, [], 'inline');
     }
 }

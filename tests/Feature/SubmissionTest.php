@@ -11,39 +11,38 @@ class SubmissionTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
+    protected $task, $submission, $file, $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = factory('App\User')->create();
+        $this->be($this->user);
+        $group = factory('App\SubjectGroupUser')->create(['user_id' => $this->user->id]);
+        $this->task = factory('App\Task')->create(['group_id' => $group->id]);
+
+        $this->submission = factory('App\Submission')->make();
+
+        $this->file = UploadedFile::fake()->create('test.pdf',200);
+    }
+
+
     /** @test */
     public function a_authorized_student_can_upload_task_submission()
     {
-        $user = factory('App\User')->create();
-        $this->be($user);
-        $group = factory('App\SubjectGroupUser')->create(['user_id' => $user->id]);
-        $task = factory('App\Task')->create(['group_id' => $group->id]);
+        $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]))->assertStatus(302);
 
-        $submission = factory('App\Submission')->make();
-
-        $file = UploadedFile::fake()->create('test.pdf',200);
-
-        $this->post($task->path(), array_merge ($submission->toArray(), ['file' => $file]))->assertStatus(302);
-
-        $this->assertDatabaseHas('submissions', ['user_id' => $user->id, 'task_id' => $task->id, 's_comment' => $submission->s_comment]);
+        $this->assertDatabaseHas('submissions', ['user_id' => $this->user->id, 'task_id' => $this->task->id, 's_comment' => $this->submission->s_comment]);
     }
 
     /** @test */
     public function a_authorized_student_cannot_send_more_than_3_submissions()
     {
-        $user = factory('App\User')->create();
-        $this->be($user);
-        $group = factory('App\SubjectGroupUser')->create(['user_id' => $user->id]);
-        $task = factory('App\Task')->create(['group_id' => $group->id]);
-
-        $submission = factory('App\Submission')->make();
-
-        $file = UploadedFile::fake()->create('test.pdf',200);
-
-        $this->post($task->path(), array_merge ($submission->toArray(), ['file' => $file]))->assertStatus(302);
-        $this->post($task->path(), array_merge ($submission->toArray(), ['file' => $file]))->assertStatus(302);
-        $this->post($task->path(), array_merge ($submission->toArray(), ['file' => $file]))->assertStatus(302);
-        $this->post($task->path(), array_merge ($submission->toArray(), ['file' => $file]))->assertStatus(403);
+        $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]))->assertStatus(302);
+        $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]))->assertStatus(302);
+        $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]))->assertStatus(302);
+        $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]))->assertStatus(403);
     }
 
     /** @test */
@@ -51,29 +50,32 @@ class SubmissionTest extends TestCase
     {
         $this->be(factory('App\User')->create());
 
-        $task = factory('App\Task')->create();
-
-        $submission = factory('App\Submission')->make();
-
-        $file = UploadedFile::fake()->create('test.pdf',200);
-
-        $this->post($task->path(), array_merge ($submission->toArray(), ['file' => $file]))->assertStatus(403);
+        $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]))->assertStatus(403);
     }
 
     /** @test */
     public function a_authorized_student_may_see_submission()
     {
-        $user = factory('App\User')->create();
-        $this->be($user);
-        $group = factory('App\SubjectGroupUser')->create(['user_id' => $user->id]);
-        $task = factory('App\Task')->create(['group_id' => $group->id]);
+        $response = $this->postJson($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]));
 
-        $submission = factory('App\Submission')->make();
+        $this->get($this->task->path() . '/' . $response->json()['id'])->assertSee($this->submission->s_comment);
+    }
 
+    /** @test */
+    public function a_authorized_student_can_upload_file_with_pdf_extension()
+    {
         $file = UploadedFile::fake()->create('test.pdf',200);
 
-        $response = $this->postJson($task->path(), array_merge ($submission->toArray(), ['file' => $file]));
+        $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $file]))->assertStatus(302);
+        $this->assertDatabaseHas('submissions', ['user_id' => $this->user->id, 'task_id' => $this->task->id, 's_comment' => $this->submission->s_comment]);
+    }
 
-        $this->get($task->path() . '/' . $response->json()['id'])->assertSee($submission->s_comment);
+    /** @test */
+    public function a_authorized_student_can_upload_file_with_zip_extension()
+    {
+        $file = UploadedFile::fake()->create('test.zip',200);
+
+        $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $file]))->assertStatus(302);
+        $this->assertDatabaseHas('submissions', ['user_id' => $this->user->id, 'task_id' => $this->task->id, 's_comment' => $this->submission->s_comment]);
     }
 }

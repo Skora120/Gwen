@@ -21,6 +21,7 @@ class CreateSubmissionsTable extends Migration
             $table->text('s_comment')->nullable();
             $table->string('mark', 2)->nullable();
             $table->string('file');
+            $table->string('file_extension')->nullable();
             $table->timestamps();
         });
     }

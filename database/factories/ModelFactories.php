@@ -89,6 +89,10 @@ $factory->define(\App\Submission::class, function(Faker $faker){
         's_comment' => $faker->sentence,
         'r_comment' => $faker->sentence,
         'mark' => $faker->numberBetween(0, 5),
+        'file' => function() use($task, $faker) {
+            $file = \Illuminate\Http\UploadedFile::fake()->create($faker->name . '.pdf', $faker->numberBetween(1, 5000));
+            return Storage::put('submissions/' . $task->id, $file);
+        }
     ];
 });
 

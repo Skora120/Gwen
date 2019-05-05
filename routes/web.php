@@ -43,6 +43,7 @@ Route::group(['prefix' => '/subjects'],function() {
             Route::post('/{task}', 'SubmissionController@store');
 //            Route::get('/{task}/', 'SubmissionController@index');
             Route::get('/{task}/{submission}', 'SubmissionController@show');
+            Route::get('/{task}/{submission}/download', 'SubmissionController@download');
         });
     });
 });
