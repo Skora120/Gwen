@@ -39,17 +39,18 @@ class SubmissionController extends Controller
      * @param SubjectGroup $group
      * @param Task $task
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(Request $request, Subject $subject, SubjectGroup $group, Task $task)
     {
-        // gate
+        $this->authorize('create', [Submission::class, $task]);
 
         $request->validate([
             's_comment' => 'nullable|max:255',
-            'file' => 'required|size:5000|mimes:pdf,zip,cpp',
+            'file' => 'required|between:0,5000|mimes:pdf,zip,cpp',
         ]);
 
-        $file = Storage::put('submissions/' . $task->id, $request->file);
+        $file = Storage::put('submissions/' . $task->id, $request->file('file'));
 
         $submission = Submission::create([
            'user_id' => auth()->id(),

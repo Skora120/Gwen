@@ -48,4 +48,15 @@ class SubjectGroup extends Model
     {
         return $this->subject->path() . '/' . $this->id;
     }
+
+    public function isUserInGroup(User $user)
+    {
+        $users = $this->users()->get();
+
+        foreach ($users as $value){
+            if ($value->user_id == $user->id)
+                return true;
+        }
+        return false;
+    }
 }

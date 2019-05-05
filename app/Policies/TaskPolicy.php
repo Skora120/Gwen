@@ -20,7 +20,8 @@ class TaskPolicy
      */
     public function view(User $user, Task $task)
     {
-        return $user->id == $task->group->owner()->id || $this->isUserInGroup($user, $task->group);
+        $group = $task->group;
+        return $user->id == $group->owner()->id || $group->isUserInGroup($user);
     }
 
     /**
@@ -81,16 +82,5 @@ class TaskPolicy
     public function forceDelete(User $user, Task $task)
     {
         //
-    }
-
-    public function isUserInGroup(User $user, SubjectGroup $subjectGroup)
-    {
-        $users = $subjectGroup->users()->get();
-
-        foreach ($users as $value){
-            if ($value->user_id == $user->id)
-                return true;
-        }
-        return false;
     }
 }

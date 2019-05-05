@@ -18,6 +18,11 @@ class Task extends Model
         return 'slug';
     }
 
+    public function submissions()
+    {
+        return $this->hasMany('App\Submission');
+    }
+
     public function path()
     {
         return ($this->group->path() . '/' . $this->slug);

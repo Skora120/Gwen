@@ -22,7 +22,7 @@ class SubjectGroupPolicy
         if ($subjectGroup->subject->user_id == $user->id)
             return true;
 
-        return $this->isUserInGroup($user, $subjectGroup);
+        return $subjectGroup->isUserInGroup($user);
     }
 
     /**
@@ -48,7 +48,7 @@ class SubjectGroupPolicy
         if ($user->id == $subjectGroup->subject()->value('user_id'))
             return false;
 
-        return !$this->isUserInGroup($user, $subjectGroup);
+        return !$subjectGroup->isUserInGroup($user);
     }
 
     /**
@@ -97,16 +97,5 @@ class SubjectGroupPolicy
     public function forceDelete(User $user, SubjectGroup $subjectGroup)
     {
         //
-    }
-
-    public function isUserInGroup(User $user, SubjectGroup $subjectGroup)
-    {
-        $users = $subjectGroup->users()->get();
-
-        foreach ($users as $value){
-            if ($value->user_id == $user->id)
-                return true;
-        }
-        return false;
     }
 }

@@ -80,11 +80,22 @@ class SubjectsController extends Controller
      */
     public function show(Subject $subject)
     {
-        if(\request()->isJson()){
-            return response($subject);
+        if(auth()->user()->isStudent()) {
+            $userGroups = $subject->subject_groups()->with(['users' => function($q){
+                $q->where('user_id', auth()->id());
+            }])->get()->filter(function ($value) {
+                return !empty($value->users[0]);
+            });
+        }else{
+//            $userGroups = $subject->subject_groups()->get();
+            $userGroups = $subject->subject_groups()->get();
         }
 
-        return view('subjects.show', compact('subject'));
+        if(\request()->isJson()){
+            return response($subject, $userGroups);
+        }
+
+        return view('subjects.show', compact('subject', 'userGroups'));
     }
 
     /**

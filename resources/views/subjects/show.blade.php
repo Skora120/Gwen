@@ -13,6 +13,24 @@
                     </div>
                 </div>
                 <hr>
+
+                <div class="card">
+                    <div class="card-header">Subject Groups</div>
+                    <div class="card-body">
+                        @forelse($userGroups as $key => $group)
+                            {{--<pre>{{print_r($group)}}</pre>--}}
+                            <p><a href="{{url()->current() . '/' . $group->id}}">{{$group->name? $group->name: 'Grupa: ' . ($key + 1)}}</a></p>
+                        @empty
+                            <p>Nie ma żadnych grup zajęciowych</p>
+                        @endforelse
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+                <hr>
+
+
                 <div class="card">
                     <div class="card-body">
                         <form action="{{$subject->path()}}" method="POST">
@@ -45,6 +63,20 @@
                         </form>
                     </div>
                 </div>
+
+                {{--@forelse( as $subject)--}}
+                    {{--<div class="card-body">--}}
+                        {{--<p>--}}
+                        {{--<pre>{{$subject->group->subject}}</pre>--}}
+                        {{--</p>--}}
+                        {{--<p>--}}
+                            {{--<a href="{{$subject->group->subject->path()}}"> {{$subject->group->subject->name}}</a>--}}
+                        {{--</p>--}}
+                        {{--<hr>--}}
+                    {{--</div>--}}
+                {{--@empty--}}
+                    {{--<p> Nie należysz do żadnej grupy</p>--}}
+                {{--@endforelse--}}
 
             </div>
         </div>

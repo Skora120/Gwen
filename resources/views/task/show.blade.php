@@ -47,6 +47,27 @@
                     </div>
                 </div>
 
+
+                <div class="card">
+                    <div class="card-header">Submission Form</div>
+                    <div class="card-body">
+                        <form action="{{$task->path()}}" method="POST" enctype="multipart/form-data">
+                            {{csrf_field()}}
+                            <div class="form-group">
+                                <label for="s_comment">Additional Comment</label>
+                                <textarea name="s_comment" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="file">File input</label>
+                                <input type="file" class="form-control-file" name="file">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                        <pre>{{$errors}}</pre>
+                    </div>
+                </div>
+
                 <hr>
             </div>
         </div>

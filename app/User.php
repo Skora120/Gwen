@@ -37,6 +37,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function ownedSubjects()
+    {
+        return $this->hasMany('App\Subject');
+    }
+
+    public function subjectGroupUser()
+    {
+        return $this->hasMany('App\SubjectGroupUser');
+    }
+
+    public function subjects()
+    {
+        return $this->subjectGroupUser()->with('group.subject');
+    }
+
     public function isLecturer()
     {
         return $this->type == 1;
