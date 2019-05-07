@@ -78,4 +78,16 @@ class SubmissionTest extends TestCase
         $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $file]))->assertStatus(302);
         $this->assertDatabaseHas('submissions', ['user_id' => $this->user->id, 'task_id' => $this->task->id, 's_comment' => $this->submission->s_comment]);
     }
+
+    /** @test */
+    public function a_authorized_student_may_see_all_his_submissions_to_task()
+    {
+        $submission2 = factory('App\Submission')->make();
+
+        $this->post($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]))->assertStatus(302);
+        $this->post($this->task->path(), array_merge ($submission2->toArray(), ['file' => $this->file]))->assertStatus(302);
+
+        $this->get($this->task->path())->assertSee($this->submission->s_comment);
+        $this->get($this->task->path())->assertSee($submission2->s_comment);
+    }
 }

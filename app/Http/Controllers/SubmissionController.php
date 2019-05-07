@@ -20,11 +20,21 @@ class SubmissionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Subject $subject
+     * @param SubjectGroup $group
+     * @param Task $task
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function index()
+    public function index(Subject $subject, SubjectGroup $group, Task $task)
     {
-        //
+        $this->authorize('index', [Submission::class, $subject]);
+
+        if (request()->isJson()){
+            return $task->userSubmissions(auth()->user())->get();
+        }
+
+        return redirect($task->path());
     }
 
     /**

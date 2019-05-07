@@ -41,7 +41,7 @@ Route::group(['prefix' => '/subjects'],function() {
             Route::patch('/{task}', 'TaskController@update');
 
             Route::post('/{task}', 'SubmissionController@store');
-//            Route::get('/{task}/', 'SubmissionController@index');
+            Route::get('/{task}/submissions', 'SubmissionController@index');
             Route::get('/{task}/{submission}', 'SubmissionController@show');
             Route::patch('/{task}/{submission}', 'SubmissionController@update');
             Route::get('/{task}/{submission}/download', 'SubmissionController@download');

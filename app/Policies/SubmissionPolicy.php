@@ -13,6 +13,20 @@ class SubmissionPolicy
     use HandlesAuthorization;
 
     /**
+     * Determine whether the user can see all the submission.
+     *
+     * @param  \App\User $user
+     * @param  \App\Submission $submission
+     * @param Subject $subject
+     * @return mixed
+     */
+    public function index(User $user, Subject $subject)
+    {
+        return $user->id == $subject->user->id;
+    }
+
+
+    /**
      * Determine whether the user can view the submission.
      *
      * @param  \App\User $user

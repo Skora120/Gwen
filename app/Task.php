@@ -23,6 +23,14 @@ class Task extends Model
         return $this->hasMany('App\Submission');
     }
 
+    public function userSubmissions(User $user)
+    {
+        if($user->isStudent()) {
+            return Submission::where('user_id', auth()->id())->where('task_id', $this->id);
+        }
+        return $this->submissions();
+    }
+
     public function path()
     {
         return ($this->group->path() . '/' . $this->slug);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Subject;
 use App\SubjectGroup;
+use App\Submission;
 use App\Task;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -80,7 +81,7 @@ class TaskController extends Controller
      * @param Subject $subject
      * @param SubjectGroup $group
      * @param Task $task
-     * @return \Illuminate\Http\Response
+     * @return array
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Subject $subject, SubjectGroup $group, Task $task)
@@ -88,11 +89,11 @@ class TaskController extends Controller
         $this->authorize('view', [Task::class, $task]);
 
         if (request()->isJson()){
-            return response($task->getOriginal());
+            return $task->getOriginal();
         }
 
 
-        return view('task.show', ['task' => $task]);
+        return view('task.show', ['task' => $task, 'submissions' => $task->userSubmissions(auth()->user())->get()]);
     }
 
     /**

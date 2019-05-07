@@ -18,6 +18,23 @@
                         </p>
                     </div>
                 </div>
+
+                <hr>
+                <div class="card">
+                    <div class="card-header">Your Submissions</div>
+                    <div class="card-body">
+                        @forelse($submissions as $submission)
+                            <div>
+                                <p>{{$submission->s_comment}}</p>
+                            </div>
+                        @empty
+                            <div>
+                                <p>You don't have any submissions for this task</p>
+                            </div>
+                        @endforelse
+                    </div>
+                </div>
+
                 <hr>
                 <div class="card">
                     <div class="card-header">Update Task</div>

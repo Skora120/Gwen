@@ -30,7 +30,7 @@ $factory->define(\App\Subject::class, function(Faker $faker){
     $name = $faker->name;
    return [
       'user_id' => function () {
-        return factory('App\User')->create()->id;
+        return factory('App\User')->state('lecturer')->create()->id;
       },
        'name' => $name,
        'description' => $faker->sentence,
