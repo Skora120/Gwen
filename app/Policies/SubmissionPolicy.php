@@ -43,9 +43,9 @@ class SubmissionPolicy
      * @param  \App\Submission  $submission
      * @return mixed
      */
-    public function update(User $user, Submission $submission)
+    public function update(User $user, Submission $submission, Subject $subject)
     {
-        //
+        return $user->id == $subject->user_id;
     }
 
     /**

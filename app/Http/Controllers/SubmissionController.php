@@ -108,13 +108,32 @@ class SubmissionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param Subject $subject
+     * @param SubjectGroup $group
+     * @param Task $task
+     * @param Submission $submission
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Subject $subject, SubjectGroup $group, Task $task, Submission $submission)
     {
-        //
+        $this->authorize('update', [$submission, $subject]);
+
+        $request->validate([
+            'r_comment' => 'max:255',
+            'mark' => 'required|numeric',
+        ]);
+
+        $submission->update([
+            'r_comment' => $request->r_comment,
+            'mark' => $request->mark,
+        ]);
+
+        if($request->isJson()){
+            return response($submission, 201);
+        }
+        return redirect($submission->path());
     }
 
     /**
