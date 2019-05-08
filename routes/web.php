@@ -34,9 +34,10 @@ Route::group(['prefix' => '/subjects'],function() {
         Route::group(['prefix' => '/{group}'],function() {
             Route::get('/', 'SubjectGroupController@show');
             Route::patch('/', 'SubjectGroupController@update');
+            Route::delete('/', 'SubjectGroupController@destroy');
             Route::post('/', 'TaskController@store');
             Route::get('/tasks', 'TaskController@index');
-
+            
             Route::group(['prefix' => '/{task}'],function() {
             Route::get('/', 'TaskController@show');
             Route::patch('/', 'TaskController@update');

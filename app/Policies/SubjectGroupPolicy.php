@@ -72,7 +72,7 @@ class SubjectGroupPolicy
      */
     public function delete(User $user, SubjectGroup $subjectGroup)
     {
-        //
+        return ($user->id == $subjectGroup->owner()->id && !$subjectGroup->users()->exists()) || $user->isAdmin();
     }
 
     /**

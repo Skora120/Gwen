@@ -12,17 +12,6 @@ class SubjectGroupsTest extends TestCase
 
 
     /** @test */
-    public function a_lecturer_can_see_subject_group()
-    {
-        $user = factory('App\User')->state('lecturer')->create();
-        $this->be($user);
-        $subject = factory('App\Subject')->create(['user_id' => $user->id]);
-        $subject_groups = factory('App\SubjectGroup')->create(['subject_id' => $subject->id]);
-
-        $this->get($subject->path() . '/' . $subject_groups->id)->assertSee($subject_groups->code);
-    }
-
-    /** @test */
     public function an_unauthenticated_cannot_see_subject_group()
     {
         $subject_groups = factory('App\SubjectGroup')->create();
@@ -39,19 +28,6 @@ class SubjectGroupsTest extends TestCase
     }
 
     /** @test */
-    public function a_lecturer_can_create_subject_group()
-    {
-        $user = factory('App\User')->state('lecturer')->create();
-        $this->be($user);
-
-        $subject = factory('App\Subject')->create(['user_id' => $user->id]);
-
-        $this->post($subject->path(), []);
-
-        $this->assertCount(1, $subject->subject_groups()->get());
-    }
-
-    /** @test */
     public function an_unauthenticated_cannot_create_subject_group()
     {
         $this->be(factory('App\User')->create());
@@ -59,20 +35,6 @@ class SubjectGroupsTest extends TestCase
         $subject = factory('App\Subject')->create();
 
         $this->post($subject->path(), [])->assertStatus(403);
-    }
-
-    /** @test */
-    public function a_lecturer_can_edit_own_subject_group()
-    {
-        $user = factory('App\User')->state('lecturer')->create();
-        $this->be($user);
-
-        $group = factory('App\SubjectGroup')->create(['subject_id' => factory('App\Subject')->create(['user_id' => $user->id])->id]);
-
-        $data = ['name' => 'Some Name'];
-
-        $this->patch($group->path(), $data);
-        $this->assertEquals($data['name'], $group->fresh()->name);
     }
 
     /** @test */
@@ -84,7 +46,6 @@ class SubjectGroupsTest extends TestCase
         $this->patch($group->path(), [])->assertStatus(403);
 
     }
-
 
     /** @test */
     public function a_student_can_join_to_subject_group()
@@ -109,18 +70,6 @@ class SubjectGroupsTest extends TestCase
     }
 
     /** @test */
-    public function a_lecturer_cannot_join__to_own_subject_group()
-    {
-        $user = factory('App\User')->create();
-        $this->be($user);
-
-        $subject = factory('App\Subject')->create(['user_id' => $user->id]);
-        $group = factory('App\SubjectGroup')->create(['subject_id' => $subject->id]);
-
-        $this->post(route('subject-join'), ['code' => $group->code])->assertStatus(403);
-    }
-
-    /** @test */
     public function a_student_can_visit_his_group()
     {
         $user = factory('App\User')->create();
@@ -128,5 +77,18 @@ class SubjectGroupsTest extends TestCase
         $user_in_group = factory('App\SubjectGroupUser')->create(['user_id' => $user->id]);
 
         $this->get($user_in_group->group->path())->assertSee($user_in_group->group->code);
+    }
+
+    /** @test */
+    public function a_student_cannot_delete_his_or_any_group()
+    {
+        $user = factory('App\User')->create();
+        $this->be($user);
+        $user_in_group = factory('App\SubjectGroupUser')->create(['user_id' => $user->id])->group;
+
+        $group_without_user = factory('App\SubjectGroupUser')->create()->group;
+
+        $this->delete($user_in_group->path())->assertSee(403);
+        $this->delete($group_without_user->path())->assertSee(403);
     }
 }

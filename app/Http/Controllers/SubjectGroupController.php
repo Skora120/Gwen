@@ -125,11 +125,20 @@ class SubjectGroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Subject $subject
+     * @param SubjectGroup $group
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function destroy($id)
+    public function destroy(Subject $subject, SubjectGroup $group)
     {
-        //
+        $this->authorize('delete', $group);
+
+        $group->delete();
+
+        if(\request()->isJson()){
+            return response(200);
+        }
+        return redirect($subject->path());
     }
 }
