@@ -36,15 +36,19 @@ Route::group(['prefix' => '/subjects'],function() {
             Route::patch('/', 'SubjectGroupController@update');
             Route::post('/', 'TaskController@store');
             Route::get('/tasks', 'TaskController@index');
-            
-            Route::get('/{task}', 'TaskController@show');
-            Route::patch('/{task}', 'TaskController@update');
 
-            Route::post('/{task}', 'SubmissionController@store');
-            Route::get('/{task}/submissions', 'SubmissionController@index');
-            Route::get('/{task}/{submission}', 'SubmissionController@show');
-            Route::patch('/{task}/{submission}', 'SubmissionController@update');
-            Route::get('/{task}/{submission}/download', 'SubmissionController@download');
+            Route::group(['prefix' => '/{task}'],function() {
+            Route::get('/', 'TaskController@show');
+            Route::patch('/', 'TaskController@update');
+            Route::post('/', 'SubmissionController@store');
+
+                Route::group(['prefix' => '/submissions'],function() {
+                    Route::get('/', 'SubmissionController@index');
+                    Route::get('/{submission}', 'SubmissionController@show');
+                    Route::patch('/{submission}', 'SubmissionController@update');
+                    Route::get('/{submission}/download', 'SubmissionController@download');
+                });
+            });
         });
     });
 });

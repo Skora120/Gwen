@@ -58,7 +58,7 @@ class SubmissionTest extends TestCase
     {
         $response = $this->postJson($this->task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]));
 
-        $this->get($this->task->path() . '/' . $response->json()['id'])->assertSee($this->submission->s_comment);
+        $this->get($this->task->path() . '/submissions/' . $response->json()['id'])->assertSee($this->submission->s_comment);
     }
 
     /** @test */

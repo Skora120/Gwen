@@ -31,7 +31,7 @@ class SubmissionController extends Controller
         $this->authorize('index', [Submission::class, $subject]);
 
         if (request()->isJson()){
-            return $task->userSubmissions(auth()->user())->get();
+            return $task->submissions;
         }
 
         return redirect($task->path());

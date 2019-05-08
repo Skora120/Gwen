@@ -13,8 +13,13 @@ class Submission extends Model
         return $this->belongsTo('App\Task');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function path()
     {
-        return ($this->task->path() . '/' . $this->id);
+        return ($this->task->path() . '/submissions/' . $this->id);
     }
 }

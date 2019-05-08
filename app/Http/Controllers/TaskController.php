@@ -92,8 +92,7 @@ class TaskController extends Controller
             return $task->getOriginal();
         }
 
-
-        return view('task.show', ['task' => $task, 'submissions' => $task->userSubmissions(auth()->user())->get()]);
+        return view('task.show', ['task' => $task, 'submissions' => $task->submissions->load('user')->groupBy('user_id')]);
     }
 
     /**

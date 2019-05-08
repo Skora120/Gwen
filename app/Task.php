@@ -20,15 +20,10 @@ class Task extends Model
 
     public function submissions()
     {
-        return $this->hasMany('App\Submission');
-    }
-
-    public function userSubmissions(User $user)
-    {
-        if($user->isStudent()) {
-            return Submission::where('user_id', auth()->id())->where('task_id', $this->id);
+        if(auth()->user()->isStudent()) {
+            return $this->hasMany('App\Submission')->where('user_id', auth()->id())->orderBy('created_at', 'desc');
         }
-        return $this->submissions();
+        return $this->hasMany('App\Submission')->orderBy('created_at', 'desc');
     }
 
     public function path()

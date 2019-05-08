@@ -23,10 +23,17 @@
                 <div class="card">
                     <div class="card-header">Your Submissions</div>
                     <div class="card-body">
-                        @forelse($submissions as $submission)
+                        @forelse($submissions as $userSubmissions)
                             <div>
-                                <p>{{$submission->s_comment}}</p>
+                            <p>{{$userSubmissions[0]->user->name}}</p>
+                            @forelse($userSubmissions as $key => $submission)
+
+                                <p>{{$submission->created_at->diffForHumans()}} <a href="{{url()->current()}}/submissions/{{$submission->id}}">{{$submission->s_comment}}</a></p>
+
+                            @empty
                             </div>
+                            <hr>
+                            @endforelse
                         @empty
                             <div>
                                 <p>You don't have any submissions for this task</p>
