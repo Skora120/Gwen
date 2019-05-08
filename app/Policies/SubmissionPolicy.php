@@ -69,9 +69,9 @@ class SubmissionPolicy
      * @param  \App\Submission  $submission
      * @return mixed
      */
-    public function delete(User $user, Submission $submission)
+    public function delete(User $user)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**

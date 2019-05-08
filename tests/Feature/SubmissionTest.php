@@ -90,4 +90,13 @@ class SubmissionTest extends TestCase
         $this->get($this->task->path())->assertSee($this->submission->s_comment);
         $this->get($this->task->path())->assertSee($submission2->s_comment);
     }
+
+    /** @test */
+    public function an_unauthorized_student_cannot_delete_his_submissions()
+    {
+        $submission2 = factory('App\Submission')->create(['user_id' => auth()->id()]);
+
+        $this->delete($submission2->path())->assertStatus(403);
+    }
+
 }

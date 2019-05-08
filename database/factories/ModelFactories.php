@@ -44,6 +44,12 @@ $factory->state(App\User::class, 'lecturer', function() {
     ];
 });
 
+$factory->state(App\User::class, 'admin', function() {
+    return [
+        'type' => 2,
+    ];
+});
+
 $factory->define(\App\SubjectGroup::class, function(Faker $faker){
     return [
         'subject_id' => function () {

@@ -58,4 +58,23 @@ class TaskLecturerTest extends TestCase
 
         $this->assertDatabaseHas('tasks', $taskUpdated->toArray());
     }
+
+    /** @test */
+    public function a_student_may_delete_a_task_without_submissions()
+    {
+        $task = factory('App\Task')->create(['group_id' => $this->group->id]);
+
+        $this->delete($task->path());
+
+        $this->assertDatabaseMissing('tasks', ['name' => $task->name, 'description' => $task->description]);
+    }
+
+    /** @test */
+    public function a_student_cannot_delete_a_task_with_submissions()
+    {
+        $task = factory('App\Task')->create(['group_id' => $this->group->id]);
+        factory('App\Submission')->create(['task_id' => $task->id]);
+
+        $this->delete($task->path())->assertStatus(403);
+    }
 }

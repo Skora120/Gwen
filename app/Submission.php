@@ -18,6 +18,11 @@ class Submission extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function fileWithExtension()
+    {
+        return ($this->file . '.' . $this->file_extension);
+    }
+
     public function path()
     {
         return ($this->task->path() . '/submissions/' . $this->id);

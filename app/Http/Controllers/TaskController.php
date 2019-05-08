@@ -153,11 +153,22 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Subject $subject
+     * @param SubjectGroup $group
+     * @param Task $task
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Subject $subject, SubjectGroup $group, Task $task)
     {
-        //
+        $this->authorize('delete', [$task, $group]);
+
+        $task->delete();
+
+        if(\request()->isJson()){
+            return response(200);
+        }
+        return redirect($task->path());
     }
 }

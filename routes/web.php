@@ -40,12 +40,14 @@ Route::group(['prefix' => '/subjects'],function() {
             Route::group(['prefix' => '/{task}'],function() {
             Route::get('/', 'TaskController@show');
             Route::patch('/', 'TaskController@update');
+            Route::delete('/', 'TaskController@destroy');
             Route::post('/', 'SubmissionController@store');
 
                 Route::group(['prefix' => '/submissions'],function() {
                     Route::get('/', 'SubmissionController@index');
                     Route::get('/{submission}', 'SubmissionController@show');
                     Route::patch('/{submission}', 'SubmissionController@update');
+                    Route::delete('/{submission}', 'SubmissionController@destroy');
                     Route::get('/{submission}/download', 'SubmissionController@download');
                 });
             });

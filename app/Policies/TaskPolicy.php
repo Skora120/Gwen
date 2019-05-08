@@ -51,13 +51,14 @@ class TaskPolicy
     /**
      * Determine whether the user can delete the task.
      *
-     * @param  \App\User  $user
-     * @param  \App\Task  $task
+     * @param  \App\User $user
+     * @param SubjectGroup $group
+     * @param  \App\Task $task
      * @return mixed
      */
-    public function delete(User $user, Task $task)
+    public function delete(User $user, Task $task, SubjectGroup $group)
     {
-        //
+        return ($user->id == $group->owner()->id && !$task->submissions()->exists()) || $user->isAdmin();
     }
 
     /**

@@ -61,4 +61,12 @@ class SubmissionLecturerTest extends TestCase
 
         $this->json('GET', $task->path() . '/submissions')->assertJsonCount(4);
     }
+
+    /** @test */
+    public function an_lecturer_cannot_delete_submissions()
+    {
+        $this->be($this->submission->task->group->subject->user);
+
+        $this->delete($this->submission->path())->assertStatus(403);
+    }
 }

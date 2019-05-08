@@ -52,4 +52,14 @@ class TaskTest extends TestCase
 
         $this->patch($task->path(), $taskUpdated->toArray())->assertStatus(403);
     }
+
+    /** @test */
+    public function a_student_cannot_delete_task()
+    {
+        $this->be(factory('App\User')->create());
+
+        $task = factory('App\Task')->create();
+
+        $this->delete($task->path())->assertStatus(403);
+    }
 }
