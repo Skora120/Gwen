@@ -156,7 +156,6 @@ class SubmissionController extends Controller
     {
         $this->authorize('delete', Submission::class);
 
-        Storage::delete($submission->fileWithExtension());
         $submission->delete();
 
         if(\request()->isJson()){

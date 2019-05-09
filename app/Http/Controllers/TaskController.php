@@ -55,7 +55,7 @@ class TaskController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'description' => 'required',
-            'startDate' => 'date',
+            'startDate' => 'date|after:now',
             'deadline' => 'required|date|after:startDate',
         ]);
 

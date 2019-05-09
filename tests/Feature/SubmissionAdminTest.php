@@ -12,7 +12,7 @@ class SubmissionAdminTest extends TestCase
     protected $submission;
 
     /** @test */
-    public function an_lecturer_cannot_delete_submissions()
+    public function an_admin_can_delete_submissions()
     {
         $this->submission = factory('App\Submission')->create();
 

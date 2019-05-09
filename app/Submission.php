@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Submission extends Model
 {
@@ -26,5 +27,11 @@ class Submission extends Model
     public function path()
     {
         return ($this->task->path() . '/submissions/' . $this->id);
+    }
+
+    public function delete()
+    {
+        Storage::delete($this->file);
+        parent::delete();
     }
 }

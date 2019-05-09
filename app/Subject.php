@@ -28,4 +28,10 @@ class Subject extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function delete()
+    {
+        $this->subject_groups()->delete();
+        return parent::delete();
+    }
+
 }

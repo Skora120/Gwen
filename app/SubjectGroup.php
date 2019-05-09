@@ -59,4 +59,11 @@ class SubjectGroup extends Model
         }
         return false;
     }
+
+    public function delete()
+    {
+        $this->tasks()->delete();
+        $this->users()->delete();
+        return parent::delete();
+    }
 }

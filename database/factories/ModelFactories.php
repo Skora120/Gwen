@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -89,16 +90,17 @@ $factory->define(\App\Task::class, function(Faker $faker){
 $factory->define(\App\Submission::class, function(Faker $faker){
     $user = factory('App\User')->create();
     $task = factory('App\Task')->create(['group_id' => factory('App\SubjectGroupUser')->create(['user_id' => $user->id])->group_id]);
+    $file = \Illuminate\Http\UploadedFile::fake()->create($faker->name . '.pdf', $faker->numberBetween(1, 5000));
     return [
         'user_id' => $user->id,
         'task_id' => $task->id,
         's_comment' => $faker->sentence,
         'r_comment' => $faker->sentence,
         'mark' => $faker->numberBetween(0, 5),
-        'file' => function() use($task, $faker) {
-            $file = \Illuminate\Http\UploadedFile::fake()->create($faker->name . '.pdf', $faker->numberBetween(1, 5000));
-            return Storage::put('submissions/' . $task->id, $file);
-        }
+        'file' => function() use($task, $file) {
+            return Storage::putFileAs('submissions/' . $task->id, $file, md5($file . time()));
+        },
+        'file_extension' => $file->getClientOriginalExtension()
     ];
 });
 

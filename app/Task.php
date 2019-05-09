@@ -31,6 +31,12 @@ class Task extends Model
         return ($this->group->path() . '/' . $this->slug);
     }
 
+    public function delete()
+    {
+        $this->submissions()->delete();
+        return parent::delete();
+    }
+
     public static function generateUniqueSlug($name)
     {
         $length = 1;
