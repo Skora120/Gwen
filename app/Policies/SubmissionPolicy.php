@@ -47,6 +47,10 @@ class SubmissionPolicy
      */
     public function create(User $user, Task $task)
     {
+        // check if submission date is in valid time frame
+        if ($task->startDate > date(now()) || $task->deadline < date(now()))
+            return false;
+
         return $task->group->isUserInGroup($user) and $task->submissions->where('user_id', $user->id)->count() < 3;
     }
 

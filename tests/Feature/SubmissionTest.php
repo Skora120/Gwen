@@ -99,4 +99,24 @@ class SubmissionTest extends TestCase
         $this->delete($submission2->path())->assertStatus(403);
     }
 
+    /** @test */
+    public function an_user_cannot_make_submission_before_start_date()
+    {
+        $futureDate = date(now()->add('+2 weeks'));
+        $endDate = date(now()->add('+4 weeks'));
+
+        $task = factory('App\Task')->create(['group_id' => $this->task->group->id, 'startDate' => $futureDate, 'startDate' => $endDate]);
+        $this->post($task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]))->assertStatus(403);
+    }
+
+    /** @test */
+    public function an_user_cannot_make_submission_after_deadline()
+    {
+        $futureDate = date(now()->add('-4 weeks'));
+        $endDate = date(now()->add('-2 weeks'));
+
+        $task = factory('App\Task')->create(['group_id' => $this->task->group->id, 'startDate' => $futureDate, 'deadline' => $endDate]);
+        $this->post($task->path(), array_merge ($this->submission->toArray(), ['file' => $this->file]))->assertStatus(403);
+    }
+
 }

@@ -55,7 +55,7 @@ class TaskController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'description' => 'required',
-            'startDate' => 'date|after:now',
+            'startDate' => 'date|after_or_equal:now -1 hour',
             'deadline' => 'required|date|after:startDate',
         ]);
 
@@ -123,7 +123,7 @@ class TaskController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'description' => 'required',
-            'startDate' => 'date|after:now',
+            'startDate' => 'date|after_or_equal:now -1 hour',
             'deadline' => 'required|date|after:startDate',
         ]);
 

@@ -73,7 +73,10 @@ $factory->define(\App\SubjectGroupUser::class, function(Faker $faker){
 });
 
 $factory->define(\App\Task::class, function(Faker $faker){
-    $beginTime = $faker->dateTimeBetween($startDate = 'now', $endDate = '+2 years');
+    $beginTime = date('Y-m-d H:i');
+    $deadline = $faker->dateTimeBetween($beginTime, $endDate = '+2 years')->format('Y-m-d H:i');
+
+//    dd($beginTime, $deadline);
     $name = $faker->sentence;
     return [
         'group_id' => function () {
@@ -81,8 +84,8 @@ $factory->define(\App\Task::class, function(Faker $faker){
         },
         'name' => $name,
         'description' => $faker->paragraph(3),
-        'startDate'=> $beginTime->format('Y-m-d H:i'),
-        'deadline' => $beginTime->add(\DateInterval::createFromDateString('+2 weeks'))->format('Y-m-d H:i'),
+        'startDate'=> $beginTime,
+        'deadline' => $deadline,
         'slug' => \App\Task::generateUniqueSlug(Str::slug($name)),
     ];
 });
