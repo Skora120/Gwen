@@ -14,12 +14,21 @@ class SubmissionTest extends TestCase
     /** @test */
     public function submission_file_is_deleted()
     {
-        $this->withoutExceptionHandling();
-
         $submission = factory('App\Submission')->create();
 
         $submission->delete();
 
         Storage::disk('local')->assertMissing($submission->file);
+    }
+
+    /** @test */
+    public function deleting_subject_results_in_cascade_delete_submission()
+    {
+        $submission = factory('App\Submission')->create();
+        $subject = $submission->task->group->subject;
+
+        $subject->delete();
+
+        $this->assertDatabaseMissing('submissions', ['id' => $submission->id]);
     }
 }

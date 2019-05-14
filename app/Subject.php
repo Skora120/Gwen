@@ -20,7 +20,7 @@ class Subject extends Model
 
     public function subject_groups()
     {
-        return $this->hasMany(SubjectGroup::class);
+        return $this->hasMany('App\SubjectGroup');
     }
 
     public function user()
@@ -30,7 +30,9 @@ class Subject extends Model
 
     public function delete()
     {
-        $this->subject_groups()->delete();
+        $this->subject_groups()->each(function($q){
+          $q->delete();
+        });
         return parent::delete();
     }
 

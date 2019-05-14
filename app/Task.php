@@ -18,6 +18,11 @@ class Task extends Model
         return 'slug';
     }
 
+    public function allModelSubmissions()
+    {
+        return $this->hasMany('App\Submission');
+    }
+
     public function submissions()
     {
         if(auth()->user()->isStudent()) {
@@ -33,7 +38,9 @@ class Task extends Model
 
     public function delete()
     {
-        $this->submissions()->delete();
+        $this->allModelSubmissions()->each(function($q){
+            $q->delete();
+        });
         return parent::delete();
     }
 

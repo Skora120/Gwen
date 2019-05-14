@@ -62,8 +62,13 @@ class SubjectGroup extends Model
 
     public function delete()
     {
-        $this->tasks()->delete();
-        $this->users()->delete();
+        $this->tasks()->each(function($q){
+          $q->delete();
+        });
+        $this->users()->each(function($q){
+            $q->delete();
+        });
+
         return parent::delete();
     }
 }
