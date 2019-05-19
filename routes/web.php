@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/settings', 'UserController@edit');
+Route::patch('/settings', 'UserController@update');
 
 Route::group(['prefix' => '/subjects'],function() {
     Route::get('/', 'SubjectsController@index');

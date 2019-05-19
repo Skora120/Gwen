@@ -6,11 +6,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a5139bf-f2d6-4ee4-9bfe-71b85f65865e" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Subject.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Subject.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/SubjectGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/SubjectGroup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/SubmissionTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/SubmissionTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/TaskAdminTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/TaskAdminTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,14 +26,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ModelFactories.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ModelFactories.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/factories/ModelFactories.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="75" column="35" lean-forward="true" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+            <state relative-caret-position="-384">
+              <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
               <folding>
                 <element signature="e#7#20#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubmissionTest.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/Unit/SubmissionTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+              <folding>
+                <element signature="e#30#69#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -60,12 +83,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tests/Feature/LecturerTest.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-        <option value="$PROJECT_DIR$/phpunit.xml" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_22_124840_create_subjects_table.php" />
         <option value="$PROJECT_DIR$/app/Policies/SubjectPolicy.php" />
-        <option value="$PROJECT_DIR$/tests/Feature/UserTest.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_22_182038_create_subject_groups_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_22_213423_create_subject_group_users_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SubjectGroupUsers.php" />
@@ -86,22 +105,18 @@
         <option value="$PROJECT_DIR$/resources/views/submissions/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/task/show.blade.php" />
         <option value="$PROJECT_DIR$/tests/Feature/SubmissionLecturerTest.php" />
-        <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/tests/Feature/TaskTest.php" />
         <option value="$PROJECT_DIR$/app/Policies/TaskPolicy.php" />
-        <option value="$PROJECT_DIR$/tests/Feature/TaskAdminTest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SubjectGroupController.php" />
         <option value="$PROJECT_DIR$/tests/Feature/SubjectGroupAdminTest.php" />
         <option value="$PROJECT_DIR$/app/Policies/SubjectGroupPolicy.php" />
         <option value="$PROJECT_DIR$/tests/Feature/SubjectGroupLecturerTest.php" />
         <option value="$PROJECT_DIR$/tests/Feature/SubjectGroupsTest.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SubmissionController.php" />
         <option value="$PROJECT_DIR$/tests/Feature/SubmissionAdminTest.php" />
         <option value="$PROJECT_DIR$/tests/Unit/SubjectGroupTest.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Submission.php" />
-        <option value="$PROJECT_DIR$/database/factories/ModelFactories.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" />
         <option value="$PROJECT_DIR$/tests/Feature/TaskLecturerTest.php" />
         <option value="$PROJECT_DIR$/app/Policies/SubmissionPolicy.php" />
@@ -111,6 +126,14 @@
         <option value="$PROJECT_DIR$/app/Task.php" />
         <option value="$PROJECT_DIR$/tests/Unit/SubjectTest.php" />
         <option value="$PROJECT_DIR$/tests/Unit/SubmissionTest.php" />
+        <option value="$PROJECT_DIR$/resources/views/users/edit.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/tests/Feature/UserTest.php" />
+        <option value="$PROJECT_DIR$/database/factories/ModelFactories.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
+        <option value="$PROJECT_DIR$/tests/Feature/TaskAdminTest.php" />
       </list>
     </option>
   </component>
@@ -213,9 +236,9 @@
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="257" />
-    <option name="y" value="-4" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="202" />
+    <option name="y" value="99" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -249,6 +272,14 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gwen" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Auth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
@@ -326,6 +357,13 @@
             <path>
               <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
               <item name="Gwen" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gwen" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -394,6 +432,12 @@
     <configuration name="SubmissionTest.submission_file_is_deleted" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner class="Tests\Unit\SubmissionTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Unit/SubmissionTest.php" method="submission_file_is_deleted" scope="Method" use_alternative_configuration_file="true" />
     </configuration>
+    <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner class="Tests\Feature\TaskAdminTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/TaskAdminTest.php" method="accounts_created_after_first_account_are_normal_students_accounts" scope="Method" use_alternative_configuration_file="true" />
+    </configuration>
+    <configuration name="TaskAdminTest.first_create_account_is_an_admin_type_next_ones_are_normal_students" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner class="Tests\Feature\TaskAdminTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/TaskAdminTest.php" method="first_create_account_is_an_admin_type_next_ones_are_normal_students" scope="Method" use_alternative_configuration_file="true" />
+    </configuration>
     <configuration name="TaskLecturerTest.a_lecturer_can_create_task" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner class="Tests\Feature\TaskLecturerTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/TaskLecturerTest.php" method="a_lecturer_can_create_task" scope="Method" use_alternative_configuration_file="true" />
     </configuration>
@@ -403,15 +447,15 @@
     <configuration name="Unit" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner directory="$PROJECT_DIR$/tests/Unit" />
     </configuration>
+    <configuration name="UserTest.a_user_can_change_his_student_id" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner class="Tests\Feature\UserTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/UserTest.php" method="a_user_can_change_his_student_id" scope="Method" use_alternative_configuration_file="true" />
+    </configuration>
     <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests" use_alternative_configuration_file="true" />
     </configuration>
     <list>
       <item itemvalue="PHPUnit.tests" />
       <item itemvalue="PHPUnit.SubmissionTest.a_authorized_student_can_upload_file_with_cpp_extension" />
-      <item itemvalue="PHPUnit.ExampleTest" />
-      <item itemvalue="PHPUnit.Unit" />
-      <item itemvalue="PHPUnit.TaskTest.a_lecturer_can_create_task_with_startDate_null" />
       <item itemvalue="PHPUnit.SubjectGroupLecturerTest.a_lecturer_can_delete_group_without_any_students" />
       <item itemvalue="PHPUnit.SubmissionTest.submission_file_is_deleted" />
       <item itemvalue="PHPUnit.SubmissionTest.an_user_cannot_make_submission_before_start_date" />
@@ -419,6 +463,12 @@
       <item itemvalue="PHPUnit.TaskLecturerTest.a_lecturer_can_create_task" />
       <item itemvalue="PHPUnit.SubmissionTest.a_authorized_student_can_upload_task_submission" />
       <item itemvalue="PHPUnit.SubjectTest.deleting_subject_results_in_cascade_delete_groups_and_tasks" />
+      <item itemvalue="PHPUnit.UserTest.a_user_can_change_his_student_id" />
+      <item itemvalue="PHPUnit.ExampleTest" />
+      <item itemvalue="PHPUnit.Unit" />
+      <item itemvalue="PHPUnit.TaskTest.a_lecturer_can_create_task_with_startDate_null" />
+      <item itemvalue="PHPUnit.TaskAdminTest.first_create_account_is_an_admin_type_next_ones_are_normal_students" />
+      <item itemvalue="PHPUnit.TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" />
     </list>
     <recent_temporary>
       <list>
@@ -446,43 +496,44 @@
       <workItem from="1556881213667" duration="44710000" />
       <workItem from="1557251628463" duration="8266000" />
       <workItem from="1557342705541" duration="25809000" />
+      <workItem from="1558108762553" duration="4156000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SubjectTest_deleting_subject_results_in_cascade_delete_groups_and_tasks - 2019.05.14 at 19h 45m 02s.xml">
-      <configuration name="SubjectTest.deleting_subject_results_in_cascade_delete_groups_and_tasks" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TaskAdminTest_accounts_created_after_first_account_are_normal_students_accounts - 2019.05.17 at 23h 14m 22s.xml">
+      <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="SubjectTest_deleting_subject_results_in_cascade_delete_groups_and_tasks - 2019.05.14 at 19h 45m 36s.xml">
-      <configuration name="SubjectTest.deleting_subject_results_in_cascade_delete_groups_and_tasks" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TaskAdminTest_accounts_created_after_first_account_are_normal_students_accounts - 2019.05.17 at 23h 14m 27s.xml">
+      <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="SubjectTest_deleting_subject_results_in_cascade_delete_groups_and_tasks - 2019.05.14 at 19h 46m 26s.xml">
-      <configuration name="SubjectTest.deleting_subject_results_in_cascade_delete_groups_and_tasks" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TaskAdminTest_accounts_created_after_first_account_are_normal_students_accounts - 2019.05.17 at 23h 14m 43s.xml">
+      <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="SubjectTest_deleting_subject_results_in_cascade_delete_groups_and_tasks - 2019.05.14 at 19h 48m 44s.xml">
-      <configuration name="SubjectTest.deleting_subject_results_in_cascade_delete_groups_and_tasks" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TaskAdminTest_accounts_created_after_first_account_are_normal_students_accounts - 2019.05.17 at 23h 14m 50s.xml">
+      <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="SubjectTest_deleting_subject_results_in_cascade_delete_groups_and_tasks - 2019.05.14 at 19h 48m 59s.xml">
-      <configuration name="SubjectTest.deleting_subject_results_in_cascade_delete_groups_and_tasks" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TaskAdminTest_accounts_created_after_first_account_are_normal_students_accounts - 2019.05.17 at 23h 14m 52s.xml">
+      <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="SubjectTest_deleting_subject_results_in_cascade_delete_groups_and_tasks - 2019.05.14 at 19h 50m 44s.xml">
-      <configuration name="SubjectTest.deleting_subject_results_in_cascade_delete_groups_and_tasks" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TaskAdminTest_accounts_created_after_first_account_are_normal_students_accounts - 2019.05.17 at 23h 15m 11s.xml">
+      <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="SubjectTest_deleting_subject_results_in_cascade_delete_groups_and_tasks - 2019.05.14 at 19h 50m 48s.xml">
-      <configuration name="SubjectTest.deleting_subject_results_in_cascade_delete_groups_and_tasks" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TaskAdminTest_accounts_created_after_first_account_are_normal_students_accounts - 2019.05.17 at 23h 15m 35s.xml">
+      <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.05.14 at 19h 50m 51s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TaskAdminTest_accounts_created_after_first_account_are_normal_students_accounts - 2019.05.17 at 23h 15m 41s.xml">
+      <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.05.14 at 19h 51m 00s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="TaskAdminTest_accounts_created_after_first_account_are_normal_students_accounts - 2019.05.17 at 23h 17m 16s.xml">
+      <configuration name="TaskAdminTest.accounts_created_after_first_account_are_normal_students_accounts" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.05.14 at 19h 51m 16s.xml">
+    <history-entry file="tests - 2019.05.17 at 23h 17m 21s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157154000" />
+    <option name="totallyTimeSpent" value="164851000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1088" extended-state="6" />
@@ -492,10 +543,10 @@
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.14947917" side_tool="true" weight="0.2573455" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.85052085" visible="true" weight="0.2573455" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.85052085" visible="true" weight="0.2573455" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15260416" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15260416" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -536,26 +587,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/Unit/StudentTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -569,9 +600,6 @@
           <caret line="16" selection-start-line="16" selection-end-line="23" selection-end-column="33" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/CreatesApplication.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/subjects_groups/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -622,30 +650,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/task/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Facades/Storage.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="66" column="31" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Feature/TaskTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
           <caret line="56" column="50" selection-start-line="56" selection-start-column="50" selection-end-line="56" selection-end-column="50" />
-          <folding>
-            <element signature="e#33#52#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -653,9 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-          <folding>
-            <element signature="e#32#53#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -663,9 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1135">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#40#61#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -701,9 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
           <caret line="137" selection-start-line="137" selection-end-line="137" />
-          <folding>
-            <element signature="e#40#56#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,50 +768,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="33" column="49" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Submission.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubjectsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="74" column="7" lean-forward="true" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
-          <folding>
-            <element signature="e#40#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubmissionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="66" column="11" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="11" />
-          <folding>
-            <element signature="e#40#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/SubmissionTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#33#66#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -831,9 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
           <caret line="50" column="63" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
-          <folding>
-            <element signature="e#32#48#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -848,23 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/TaskAdminTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Unit/SubmissionTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-          <folding>
-            <element signature="e#30#69#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -896,12 +838,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubjectsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/task/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="25" column="58" lean-forward="true" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/SubmissionTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-352">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubmissionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/TaskAdminTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#33#46#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/UserTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="21" column="50" lean-forward="true" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="36" column="59" lean-forward="true" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/users/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" lean-forward="true" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="72" column="44" lean-forward="true" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-223">
+          <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/factories/ModelFactories.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="75" column="35" lean-forward="true" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+        <state relative-caret-position="-384">
+          <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
           <folding>
             <element signature="e#7#20#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/CreatesApplication.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Unit/SubmissionTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+          <folding>
+            <element signature="e#30#69#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
