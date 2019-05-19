@@ -33,15 +33,19 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'password' => 'string|min:8|confirmed',
-            'email' => 'string|email|max:255|unique:users',
-            'student_id' => 'integer|min:6',
+            'first_name' => 'nullable|string|max:255',
+            'last_name' => 'nullable|string|max:255',
+            'password' => 'nullable|string|min:8|confirmed',
+            'email' => 'nullable|string|email|confirmed|max:255|unique:users',
+            'student_id' => 'nullable|string|min:6|unique:users',
 
         ]);
 
         $user = auth()->user();
 
         $user->update([
+            'first_name' => $request->first_name    ? $request->first_name              : $user->first_name,
+            'last_name' => $request->last_name      ? $request->last_name               : $user->last_name,
             'email'      => $request->email         ? $request->email                   : $user->email,
             'student_id' => $request->student_id    ? $request->student_id              : $user->student_id,
             'password'   => $request->password      ? Hash::make($request->password)    : $user->password,

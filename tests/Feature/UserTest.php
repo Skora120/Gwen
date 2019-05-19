@@ -61,7 +61,7 @@ class UserTest extends TestCase
         $this->be($user);
         $user_old_email = $user->email;
 
-        $this->patch('/settings', ['email' => 'test2323@example.com']);
+        $this->patch('/settings', ['email' => 'test2323@example.com', 'email_confirmation' => 'test2323@example.com']);
 
         $this->assertNotEquals($user->refresh()->email, $user_old_email);
     }
