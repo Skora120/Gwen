@@ -28,7 +28,8 @@ class TaskAdminTest extends TestCase
     public function first_create_account_is_an_admin_type()
     {
         $data = [
-            'name' => $this->faker->name,
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
             'email' => $this->faker->email,
             'password' => '12345678',
             'password_confirmation' => '12345678',
@@ -45,7 +46,8 @@ class TaskAdminTest extends TestCase
         factory('App\User')->create();
 
         $data = [
-            'name' => $this->faker->name,
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
             'email' => $this->faker->email,
             'password' => '12345678',
             'password_confirmation' => '12345678',

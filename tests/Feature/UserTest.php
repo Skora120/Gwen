@@ -16,22 +16,21 @@ class UserTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $data = [
-            'name' => $this->faker->name,
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
             'email' => $this->faker->email,
             'password' => '12345678',
             'password_confirmation' => '12345678',
             'student_id' => 11111111
         ];
 
-        // Post
         $response = $this->post('/register', $data);
 
         $this->assertEquals($response->status(), 302);
 
-        // Assert that user exists
         $this->assertDatabaseHas('users', [
             'email' => $data['email'],
-            'name' => $data['name'],
+            'last_name' => $data['last_name'],
         ]);
     }
 
