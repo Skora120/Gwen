@@ -142,11 +142,19 @@ class SubjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Subject $subject
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function destroy($id)
+    public function destroy(Subject $subject)
     {
-        //
+        $this->authorize('delete', $subject);
+
+        $subject->delete();
+
+        if(\request()->isJson()){
+            return response(200);
+        }
+        return redirect('/');
     }
 }

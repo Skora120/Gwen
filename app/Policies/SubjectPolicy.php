@@ -54,7 +54,7 @@ class SubjectPolicy
      */
     public function delete(User $user, Subject $subject)
     {
-        //
+        return ($user->id == $subject->user_id && !$subject->hasUsers()) || $user->isAdmin();
     }
 
     /**

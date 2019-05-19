@@ -81,7 +81,6 @@ class SubjectTest extends TestCase
     /** @test */
     public function an_owner_can_modify_subject()
     {
-        $this->withoutExceptionHandling();
         $lecturer = factory('App\User')->state('lecturer')->create();
         $this->be($lecturer);
 
@@ -108,5 +107,25 @@ class SubjectTest extends TestCase
 
         $this->get($subject->path())->assertDontSee($data['description']);
         $this->get($subject->path())->assertSee($subject->description);
+    }
+
+    /** @test */
+    public function an_owner_can_delete_empty_subject()
+    {
+        $lecturer = factory('App\User')->state('lecturer')->create();
+        $this->be($lecturer);
+
+        $subject = factory('App\Subject')->create(['user_id' => auth()->id()]);
+
+        $this->delete($subject->path())->assertStatus(302);
+    }
+
+    /** @test */
+    public function an_unauthorized_user_cannot_delete_empty_subject()
+    {
+        $this->be(factory('App\User')->state('lecturer')->create());
+        $subject = factory('App\Subject')->create();
+
+        $this->delete($subject->path())->assertStatus(403);
     }
 }

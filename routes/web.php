@@ -19,6 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['prefix' => '/admin'],function() {
+    Route::get('/', 'Admin\AdminController@index');
+    Route::get('/users/{user}', 'Admin\AdminUsersController@show');
+    Route::patch('/users/{user}', 'Admin\AdminUsersController@update');
+    Route::get('/users', 'Admin\AdminUsersController@index');
+});
+
+
 Route::get('/settings', 'UserController@edit');
 Route::patch('/settings', 'UserController@update');
 
@@ -31,8 +39,9 @@ Route::group(['prefix' => '/subjects'],function() {
     Route::group(['prefix' => '/{subject}'],function() {
         Route::get('/', 'SubjectsController@show');
         Route::patch('/', 'SubjectsController@update');
-        Route::post('/', 'SubjectGroupController@store');
+        Route::delete('/', 'SubjectsController@destroy');
 
+        Route::post('/', 'SubjectGroupController@store');
         Route::group(['prefix' => '/{group}'],function() {
             Route::get('/', 'SubjectGroupController@show');
             Route::patch('/', 'SubjectGroupController@update');

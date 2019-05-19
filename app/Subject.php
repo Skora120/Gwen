@@ -28,6 +28,19 @@ class Subject extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function hasUsers()
+    {
+        $isEmpty = false;
+
+        $this->subject_groups()->each(function($q) use ($isEmpty){
+            if($q->users()->exists()){
+                $isEmpty = false;
+                return true;
+            }
+        });
+        return $isEmpty;
+    }
+
     public function delete()
     {
         $this->subject_groups()->each(function($q){
