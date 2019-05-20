@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->bigInteger('group_id');
             $table->string('name');
             $table->text('description');
+            $table->text('max_mark');
             $table->timestamp('startDate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('deadline')->nullable();
             $table->string('slug')->nullable();

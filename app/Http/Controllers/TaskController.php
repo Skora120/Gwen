@@ -57,6 +57,7 @@ class TaskController extends Controller
             'description' => 'required',
             'startDate' => 'date|after_or_equal:now -1 hour',
             'deadline' => 'required|date|after:startDate',
+            'max_mark' => 'required|numeric',
         ]);
 
         $task = Task::create([
@@ -65,6 +66,7 @@ class TaskController extends Controller
             'description' => $request->description,
             'startDate' => $request->startDate,
             'deadline' => $request->deadline,
+            'max_mark' => $request->max_mark,
             'slug' => Task::generateUniqueSlug(Str::slug($request->name)),
         ]);
 
@@ -125,6 +127,7 @@ class TaskController extends Controller
             'description' => 'required',
             'startDate' => 'date|after_or_equal:now -1 hour',
             'deadline' => 'required|date|after:startDate',
+            'max_mark' => 'required|numeric',
         ]);
 
         if ($task->name != $request->name){
@@ -133,6 +136,7 @@ class TaskController extends Controller
                 'description' => $request->description,
                 'startDate' => $request->startDate,
                 'deadline' => $request->deadline,
+                'max_mark' => $request->max_mark,
                 'slug' => Task::generateUniqueSlug(Str::slug($request->name)),
             ]);
         }else{
@@ -140,6 +144,7 @@ class TaskController extends Controller
                 'description' => $request->description,
                 'startDate' => $request->startDate,
                 'deadline' => $request->deadline,
+                'max_mark' => $request->max_mark,
             ]);
         }
 

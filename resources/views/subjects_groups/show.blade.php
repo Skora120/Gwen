@@ -52,6 +52,10 @@
                                 <label for="description">End Time</label>
                                 <input type="text" class="form-control" name="deadline">
                             </div>
+                            <div class="form-group">
+                                <label for="max_mark">Max Mark</label>
+                                <input type="number" class="form-control" name="max_mark">
+                            </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

@@ -85,6 +85,7 @@ $factory->define(\App\Task::class, function(Faker $faker){
         },
         'name' => $name,
         'description' => $faker->paragraph(3),
+        'max_mark' => $faker->numberBetween(5,10),
         'startDate'=> $beginTime,
         'deadline' => $deadline,
         'slug' => \App\Task::generateUniqueSlug(Str::slug($name)),
@@ -100,7 +101,7 @@ $factory->define(\App\Submission::class, function(Faker $faker){
         'task_id' => $task->id,
         's_comment' => $faker->sentence,
         'r_comment' => $faker->sentence,
-        'mark' => $faker->numberBetween(0, 5),
+        'mark' => $faker->numberBetween(0, $task->max_mark),
         'file' => function() use($task, $file) {
             return Storage::putFileAs('submissions/' . $task->id, $file, md5($file . time()));
         },

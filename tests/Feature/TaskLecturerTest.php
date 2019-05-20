@@ -51,6 +51,8 @@ class TaskLecturerTest extends TestCase
     /** @test */
     public function a_lecturer_can_update_task()
     {
+        $this->withoutExceptionHandling();
+
         $task = factory('App\Task')->create(['group_id' => $this->group->id]);
         $taskUpdated = factory('App\Task')->make(['group_id' => $this->group->id]);
 
