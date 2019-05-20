@@ -31,6 +31,10 @@ Route::group(['prefix' => '/admin'],function() {
 
 });
 
+Route::group(['prefix' => '/statistics'],function() {
+    Route::get('/', 'StatisticsController@index');
+});
+
 
 Route::get('/settings', 'UserController@edit');
 Route::patch('/settings', 'UserController@update');

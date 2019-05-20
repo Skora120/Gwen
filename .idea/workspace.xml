@@ -6,12 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a5139bf-f2d6-4ee4-9bfe-71b85f65865e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ModelFactories.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ModelFactories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_04_23_131135_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_04_23_131135_create_tasks_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/subjects_groups/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/subjects_groups/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/task/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/task/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/TaskLecturerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/TaskLecturerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/statistics/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/SubjectGroupAdminTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/SubjectGroupLecturerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/SubjectGroupsTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/SubmissionAdminTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/SubmissionLecturerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/SubmissionTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/TaskAdminTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/TaskLecturerTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/TaskTest.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +34,26 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="26" column="77" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="77" />
+            <state relative-caret-position="368">
+              <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatisticsController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StatisticsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/statistics/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -37,53 +61,8 @@
       <file leaf-file-name="Task.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Task.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1329">
-              <caret line="129" column="43" selection-start-line="129" selection-start-column="43" selection-end-line="129" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/task/show.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/subjects_groups/show.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="54" selection-start-line="54" selection-end-line="57" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskLecturerTest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Feature/TaskLecturerTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="53" column="42" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminSubjectsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/AdminSubjectsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+            <state relative-caret-position="416">
+              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -91,11 +70,20 @@
       <file leaf-file-name="AdministratorPanelTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/Feature/AdministratorPanelTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="77" column="11" selection-start-line="77" selection-start-column="11" selection-end-line="77" selection-end-column="11" />
+            <state relative-caret-position="-80">
+              <caret line="55" column="47" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
               <folding>
                 <element signature="e#33#52#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserStatTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/Feature/Statistics/UserStatTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -124,9 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Policies/SubjectGroupPolicy.php" />
-        <option value="$PROJECT_DIR$/tests/Feature/SubjectGroupLecturerTest.php" />
-        <option value="$PROJECT_DIR$/tests/Feature/SubjectGroupsTest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SubmissionController.php" />
         <option value="$PROJECT_DIR$/tests/Feature/SubmissionAdminTest.php" />
         <option value="$PROJECT_DIR$/tests/Unit/SubjectGroupTest.php" />
@@ -161,9 +146,7 @@
         <option value="$PROJECT_DIR$/app/Subject.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminSubjectsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminSubmissionController.php" />
-        <option value="$PROJECT_DIR$/tests/Feature/AdministratorPanelTest.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminSubmissionsController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/submissions/index.blade.php" />
@@ -175,6 +158,11 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" />
         <option value="$PROJECT_DIR$/resources/views/subjects_groups/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/task/show.blade.php" />
+        <option value="$PROJECT_DIR$/tests/Feature/AdministratorPanelTest.php" />
+        <option value="$PROJECT_DIR$/tests/Feature/Statistics/UserStatTest.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/statistics/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/StatisticsController.php" />
       </list>
     </option>
   </component>
@@ -317,17 +305,6 @@
             <path>
               <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
               <item name="Gwen" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Providers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Gwen" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Gwen" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -339,12 +316,6 @@
             <path>
               <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
               <item name="Gwen" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Gwen" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -352,6 +323,13 @@
               <item name="Gwen" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gwen" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="statistics" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
@@ -384,6 +362,13 @@
               <item name="Gwen" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="Feature" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Gwen" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Gwen" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="Feature" type="462c0819:PsiDirectoryNode" />
+              <item name="Statistics" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -419,12 +404,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.tests">
+  <component name="RunManager" selected="PHPUnit.Statistics">
     <configuration name="AdministratorPanelTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner class="Tests\Feature\AdministratorPanelTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/AdministratorPanelTest.php" scope="Class" use_alternative_configuration_file="true" />
     </configuration>
     <configuration name="ExampleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Unit\ExampleTest" file="$PROJECT_DIR$/tests/Unit/ExampleTest.php" scope="Class" />
+    </configuration>
+    <configuration name="Statistics" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml" directory="$PROJECT_DIR$/tests/Feature/Statistics" use_alternative_configuration_file="true" />
     </configuration>
     <configuration name="SubjectGroupLecturerTest.a_lecturer_can_delete_group_without_any_students" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner class="Tests\Feature\SubjectGroupLecturerTest" configuration_file="$PROJECT_DIR$/phpunit.xml" file="$PROJECT_DIR$/tests/Feature/SubjectGroupLecturerTest.php" method="a_lecturer_can_delete_group_without_any_students" scope="Method" use_alternative_configuration_file="true" />
@@ -485,6 +473,7 @@
       <item itemvalue="PHPUnit.ExampleTest" />
       <item itemvalue="PHPUnit.Unit" />
       <item itemvalue="PHPUnit.TaskTest.a_lecturer_can_create_task_with_startDate_null" />
+      <item itemvalue="PHPUnit.Statistics" />
     </list>
     <recent_temporary>
       <list>
@@ -517,39 +506,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AdministratorPanelTest - 2019.05.20 at 13h 39m 16s.xml">
-      <configuration name="AdministratorPanelTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="AdministratorPanelTest - 2019.05.20 at 13h 39m 33s.xml">
-      <configuration name="AdministratorPanelTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="AdministratorPanelTest - 2019.05.20 at 13h 50m 29s.xml">
-      <configuration name="AdministratorPanelTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="AdministratorPanelTest - 2019.05.20 at 13h 50m 44s.xml">
-      <configuration name="AdministratorPanelTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="tests - 2019.05.20 at 14h 13m 19s.xml">
+    <history-entry file="tests - 2019.05.20 at 15h 49m 54s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.05.20 at 14h 29m 28s.xml">
+    <history-entry file="tests - 2019.05.20 at 15h 50m 01s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.05.20 at 14h 29m 59s.xml">
+    <history-entry file="tests - 2019.05.20 at 15h 50m 15s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.05.20 at 14h 30m 15s.xml">
+    <history-entry file="tests - 2019.05.20 at 15h 51m 07s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.05.20 at 14h 30m 33s.xml">
+    <history-entry file="tests - 2019.05.20 at 15h 53m 02s.xml">
       <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="tests - 2019.05.20 at 14h 31m 45s.xml">
-      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="Statistics - 2019.05.20 at 15h 53m 11s.xml">
+      <configuration name="Statistics" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Statistics - 2019.05.20 at 15h 53m 20s.xml">
+      <configuration name="Statistics" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Statistics - 2019.05.20 at 15h 56m 04s.xml">
+      <configuration name="Statistics" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Statistics - 2019.05.20 at 16h 20m 10s.xml">
+      <configuration name="Statistics" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Statistics - 2019.05.20 at 16h 22m 48s.xml">
+      <configuration name="Statistics" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181919000" />
+    <option name="totallyTimeSpent" value="186934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1088" extended-state="6" />
@@ -559,10 +548,10 @@
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.14947917" side_tool="true" weight="0.2573455" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.85052085" visible="true" weight="0.2573455" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.85052085" visible="true" weight="0.2573455" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15260416" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15260416" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32928064" />
@@ -617,34 +606,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/Unit/SubmissionTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="53" column="57" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/SubmissionLecturerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/Feature/SubjectGroupsTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
@@ -755,13 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="57" column="77" selection-start-line="57" selection-start-column="77" selection-end-line="57" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/subjects/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="60" lean-forward="true" selection-end-line="55" />
         </state>
       </provider>
     </entry>
@@ -911,16 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Feature/AdministratorPanelTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="77" column="11" selection-start-line="77" selection-start-column="11" selection-end-line="77" selection-end-column="11" />
-          <folding>
-            <element signature="e#33#52#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/AdminSubjectsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -938,20 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="26" column="77" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Task.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/Feature/TaskLecturerTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -966,13 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1329">
-          <caret line="129" column="43" selection-start-line="129" selection-start-column="43" selection-end-line="129" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/subjects_groups/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
@@ -982,8 +905,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/task/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+        <state relative-caret-position="640">
+          <caret line="40" column="33" lean-forward="true" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1329">
+          <caret line="129" column="43" selection-start-line="129" selection-start-column="43" selection-end-line="129" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/Statistics/UserStatTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" selection-start-line="23" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Feature/AdministratorPanelTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="55" column="47" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
+          <folding>
+            <element signature="e#33#52#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/subjects/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="25" column="42" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/statistics/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StatisticsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
