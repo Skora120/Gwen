@@ -22,7 +22,7 @@ class SubmissionPolicy
      */
     public function index(User $user, Subject $subject)
     {
-        return $user->id == $subject->user->id;
+        return $user->id == $subject->user->id || $user->isAdmin();
     }
 
 
@@ -36,7 +36,7 @@ class SubmissionPolicy
      */
     public function view(User $user, Submission $submission, Subject $subject)
     {
-        return $user->id == $subject->user->id || $submission->user_id == $user->id;
+        return $user->id == $subject->user->id || $submission->user_id == $user->id || $user->isAdmin();
     }
 
     /**

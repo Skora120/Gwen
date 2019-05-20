@@ -13,6 +13,12 @@ class Subject extends Model
         return 'slug';
     }
 
+    public function getPathAttribute()
+    {
+        return ('/subjects/' . $this->slug);
+    }
+
+
     public function path()
     {
         return ('/subjects/' . $this->slug);

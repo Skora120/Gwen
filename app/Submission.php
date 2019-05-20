@@ -19,6 +19,11 @@ class Submission extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function getPathAttribute()
+    {
+        return $this->path();
+    }
+
     public function fileWithExtension()
     {
         return ($this->file . '.' . $this->file_extension);

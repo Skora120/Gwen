@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->subjectGroupUser()->with('group.subject');
     }
 
+    public function submissions()
+    {
+        return $this->hasMany('App\Submission');
+    }
+
     public function isLecturer()
     {
         return $this->type == 1;

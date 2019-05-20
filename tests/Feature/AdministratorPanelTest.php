@@ -55,8 +55,6 @@ class AdministratorPanelTest extends TestCase
     /** @test */
     public function an_admin_may_edit_user_profile()
     {
-        $this->withoutExceptionHandling();
-
         $this->be(factory('App\User')->state('admin')->create());
         $user = factory('App\User')->create();
 
@@ -79,5 +77,26 @@ class AdministratorPanelTest extends TestCase
             'type' => '2',
         ]);
     }
+
+    /** @test */
+    public function an_admin_may_see_all_subjects()
+    {
+        $this->be(factory('App\User')->state('admin')->create());
+        $subjects = factory('App\Subject', 10)->create();
+
+        $this->get('/admin/subjects/')->assertSee($subjects[0]->name)->assertSee($subjects[9]->name);
+    }
+
+    /** @test */
+    public function an_admin_may_see_all_student_submissions()
+    {
+        $this->be(factory('App\User')->state('admin')->create());
+        $submission = factory('App\Submission')->create();
+
+        $user = $submission->user;
+
+        $this->get('/admin/users/'. $user->id .'/submissions')->assertSee($submission->task->name);
+    }
+
 
 }

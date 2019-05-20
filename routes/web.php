@@ -21,9 +21,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => '/admin'],function() {
     Route::get('/', 'Admin\AdminController@index');
+
     Route::get('/users/{user}', 'Admin\AdminUsersController@show');
     Route::patch('/users/{user}', 'Admin\AdminUsersController@update');
+    Route::get('/users/{user}/submissions', 'Admin\AdminSubmissionsController@index');
     Route::get('/users', 'Admin\AdminUsersController@index');
+
+    Route::get('/subjects', 'Admin\AdminSubjectsController@index');
+
 });
 
 
