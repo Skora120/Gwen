@@ -78,4 +78,12 @@ Route::group(['prefix' => '/subjects'],function() {
             });
         });
     });
+
+
+Route::get('/test', function(){
+	return view('test');
+});
+
+Route::get('/test_send_task', function(){
+	return view('test_send_task');
 });
