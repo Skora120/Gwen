@@ -32,7 +32,7 @@ class AdministratorPanelTest extends TestCase
         $subject = factory('App\Subject')->create();
         $this->be(factory('App\User')->state('admin')->create());
 
-        $this->get('/admin')->assertSee($subject->name);
+        $this->get('/admin/subjects')->assertSee($subject->name);
     }
 
     /** @test */
@@ -84,7 +84,7 @@ class AdministratorPanelTest extends TestCase
         $this->be(factory('App\User')->state('admin')->create());
         $subjects = factory('App\Subject', 10)->create();
 
-        $this->get('/admin/subjects/')->assertSee($subjects[0]->name)->assertSee($subjects[9]->name);
+        $this->get('/admin/subjects/')->assertSee($subjects[0]->name)->assertSee($subjects[5]->name);
     }
 
     /** @test */

@@ -33,6 +33,8 @@ Route::group(['prefix' => '/admin'],function() {
 
 Route::group(['prefix' => '/statistics'],function() {
     Route::get('/', 'StatisticsController@index');
+    Route::get('/subjects/{subject}', 'StatisticsLecturerController@subject_show');
+    Route::get('/subjects/{subject}/{group}', 'StatisticsLecturerController@group_show');
 });
 
 
@@ -51,6 +53,8 @@ Route::group(['prefix' => '/subjects'],function() {
         Route::delete('/', 'SubjectsController@destroy');
 
         Route::post('/', 'SubjectGroupController@store');
+        Route::post('/task', 'TaskController@store_multiple');
+
         Route::group(['prefix' => '/{group}'],function() {
             Route::get('/', 'SubjectGroupController@show');
             Route::patch('/', 'SubjectGroupController@update');

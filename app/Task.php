@@ -31,6 +31,11 @@ class Task extends Model
         return $this->hasMany('App\Submission')->orderBy('created_at', 'desc');
     }
 
+    public function getPathAttribute()
+    {
+        return $this->path();
+    }
+
     public function path()
     {
         return ($this->group->path() . '/' . $this->slug);

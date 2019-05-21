@@ -77,6 +77,43 @@ class TaskController extends Controller
         return redirect($task->path());
     }
 
+
+    /**
+     * Store a newly created resource in storage.
+     * Creates task for each subject group.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param Subject $subject
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function store_multiple(Request $request, Subject $subject)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'startDate' => 'date|after_or_equal:now -1 hour',
+            'deadline' => 'required|date|after:startDate',
+            'max_mark' => 'required|numeric',
+            'groups' => 'required'
+        ]);
+
+        $this->authorize('create_multiple', [Task::class, $subject, $request->groups]);
+
+        foreach($request->groups as $group) {
+            Task::create([
+                'group_id' => $group,
+                'name' => $request->name,
+                'description' => $request->description,
+                'startDate' => $request->startDate,
+                'deadline' => $request->deadline,
+                'max_mark' => $request->max_mark,
+                'slug' => Task::generateUniqueSlug(Str::slug($request->name)),
+            ]);
+        }
+        return redirect($subject->path());
+    }
+
     /**
      * Display the specified resource.
      *

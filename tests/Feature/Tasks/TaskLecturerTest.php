@@ -79,4 +79,36 @@ class TaskLecturerTest extends TestCase
 
         $this->delete($task->path())->assertStatus(403);
     }
+
+    /** @test */
+    public function a_lecturer_can_create_task_to_each_group_at_once()
+    {
+        $subject = $this->group->subject;
+        factory('App\SubjectGroup', 3)->create(['subject_id' => $subject->id]);
+
+        $task = factory('App\Task')->make();
+
+        $groups_id = $subject->subject_groups()->pluck('id');
+
+        $this->post($subject->path() . '/task', array_merge($task->toArray(), ['groups' => $groups_id]))->assertStatus(302);
+
+        $tasks_count = $subject->refresh()->subject_groups()->withCount('tasks')->pluck('subject_groups.tasks_count')->sum();
+
+        $this->assertEquals(4, $tasks_count);
+    }
+
+    /** @test */
+    public function a_lecturer_cannot_create_task_to_each_group_at_once_if_he_does_not_own_group()
+    {
+
+        $subject = $this->group->subject;
+        $groups = factory('App\SubjectGroup', 3)->create();
+
+        $task = factory('App\Task')->make();
+
+        $groups_id = $groups->pluck('id');
+
+
+        $this->post($subject->path() . '/task', array_merge($task->toArray(), ['groups' => $groups_id]))->assertStatus(403);
+    }
 }

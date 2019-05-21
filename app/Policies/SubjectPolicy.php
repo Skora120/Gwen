@@ -42,7 +42,7 @@ class SubjectPolicy
      */
     public function update(User $user, Subject $subject)
     {
-        return  $subject->user_id == $user->id;
+        return  $subject->user_id == $user->id || $user->isAdmin();
     }
 
     /**

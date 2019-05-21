@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Subject;
 use App\SubjectGroup;
 use App\User;
 use App\Task;
@@ -35,6 +36,22 @@ class TaskPolicy
     {
         return $user->id == $group->owner()->id;
     }
+
+    /**
+     * Determine whether the user can create tasks.
+     *
+     * @param  \App\User $user
+     * @param Subject $subject
+     * @param $groups
+     * @return mixed
+     */
+    public function create_multiple(User $user, Subject $subject, $groups)
+    {
+        $owned_groups_number_from_groups = SubjectGroup::find($groups)->where('subject_id', $subject->id)->count();
+
+        return $user->id == $subject->user_id && $owned_groups_number_from_groups == count($groups);
+    }
+
 
     /**
      * Determine whether the user can update the task.

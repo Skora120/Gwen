@@ -14,10 +14,10 @@
                             {{$task->startDate}}
                         </p>
                         <p>
-                            {{$task->max_mark}}
+                            {{$task->deadline}}
                         </p>
                         <p>
-                            {{$task->deadline}}
+                            {{$task->max_mark}}
                         </p>
                     </div>
                 </div>

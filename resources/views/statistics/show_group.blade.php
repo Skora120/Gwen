@@ -8,7 +8,8 @@
 
                     <div class="card-header">Statistics</div>
                     <div class="card-body">
-
+                        <pre>{{print_r($tasksCount)}}</pre>
+                        <pre>{{print_r($tasks)}}</pre>
                     </div>
                 </div>
             </div>

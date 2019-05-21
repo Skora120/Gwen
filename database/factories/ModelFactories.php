@@ -77,7 +77,6 @@ $factory->define(\App\Task::class, function(Faker $faker){
     $beginTime = date('Y-m-d H:i');
     $deadline = $faker->dateTimeBetween($beginTime, $endDate = '+2 years')->format('Y-m-d H:i');
 
-//    dd($beginTime, $deadline);
     $name = $faker->sentence;
     return [
         'group_id' => function () {

@@ -38,7 +38,7 @@ class Subject extends Model
     {
         $isEmpty = false;
 
-        $this->subject_groups()->each(function($q) use ($isEmpty){
+        $this->subject_groups()->each(function($q) use (&$isEmpty){
             if($q->users()->exists()){
                 $isEmpty = false;
                 return true;
