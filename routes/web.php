@@ -78,7 +78,7 @@ Route::group(['prefix' => '/subjects'],function() {
             });
         });
     });
-
+});
 
 Route::get('/test', function(){
 	return view('test');
