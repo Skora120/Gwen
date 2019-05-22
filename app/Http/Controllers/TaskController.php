@@ -24,7 +24,42 @@ class TaskController extends Controller
      * @param SubjectGroup $group
      * @return \Illuminate\Http\Response
      */
-    public function index(Subject $subject, SubjectGroup $group)
+    public function index()
+    {
+        $user = auth()->user();
+
+        if($user->isLecturer()){
+            $tasks = [];
+
+            $user->ownedSubjects()->with(['subject_groups.tasks' => function($q) use (&$tasks){
+                $tasks = $q->orderBy('created_at', 'desc')->paginate(10);
+            }])->get();
+
+
+            return view('task.index', compact('tasks'));
+        }
+
+        else if($user->isStudent()){
+            $tasks = [];
+
+            $user->subjectGroupUser()->with(['group.tasks' => function($q) use (&$tasks){
+                $tasks = $q->orderBy('created_at', 'desc')->paginate(10);
+            }])->get();
+
+            return view('task.index', compact('tasks'));
+        }
+
+        return redirect('/');
+    }
+
+    /**
+     * Display a listing of the resource for group.
+     *
+     * @param Subject $subject
+     * @param SubjectGroup $group
+     * @return \Illuminate\Http\Response
+     */
+    public function index_group(Subject $subject, SubjectGroup $group)
     {
         return response($group->tasks);
     }

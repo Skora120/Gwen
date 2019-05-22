@@ -43,6 +43,20 @@ class TaskTest extends TestCase
     }
 
     /** @test */
+    public function a_student_can_see_tasks_that_are_for_him()
+    {
+        $user = factory('App\User')->create();
+        $this->be($user);
+        $group = factory('App\SubjectGroup')->create();
+
+        factory('App\SubjectGroupUser')->create(['group_id' => $group->id, 'user_id' => $user->id]);
+
+        $task = factory('App\Task')->create(['group_id' => $group->id]);
+
+        $this->get('/tasks')->assertSee($task->name);
+    }
+
+    /** @test */
     public function an_unauthorized_user_cannot_update_task()
     {
         $this->be(factory('App\User')->create());

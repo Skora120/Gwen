@@ -37,6 +37,8 @@ Route::group(['prefix' => '/statistics'],function() {
 Route::get('/settings', 'UserController@edit');
 Route::patch('/settings', 'UserController@update');
 
+
+Route::get('/tasks', 'TaskController@index');
 Route::group(['prefix' => '/subjects'],function() {
     Route::get('/', 'SubjectsController@index');
     Route::post('/', 'SubjectsController@store');
