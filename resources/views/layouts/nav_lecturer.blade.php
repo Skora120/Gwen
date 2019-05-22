@@ -15,7 +15,7 @@
     <div class="sidebar-heading">
         Moje przedmioty
     </div>
-
+    @if(!empty($w_subjects[0]))
     @foreach($w_subjects as $subject)
         <li class="nav-item">
             <a class="nav-link" href="{{$subject->path}}">
@@ -29,6 +29,13 @@
             <i class="fas fa-fw fa-graduation-cap"></i>
             <span class="font-weight-bold">Pokaż wszystkie</span></a>
     </li>
+    @else
+        <li class="nav-item">
+            <a class="nav-link" href="/subjects">
+                <i class="fas fa-fw fa-graduation-cap"></i>
+                <span class="font-weight-bold">Nie posiadasz żadnych przedmiotów</span></a>
+        </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -38,6 +45,7 @@
         Moje zadania
     </div>
 
+    @if(!empty($w_tasks))
     @foreach($w_tasks as $task)
         <li class="nav-item">
             <a class="nav-link" href="{{$task->path}}">
@@ -51,6 +59,14 @@
             <i class="fas fa-fw fa-meteor"></i>
             <span class="font-weight-bold">Zobacz wszystkie</span></a>
     </li>
+    @else
+        <li class="nav-item">
+            <a class="nav-link" href="/">
+                <i class="fas fa-fw fa-graduation-cap"></i>
+                <span class="font-weight-bold">Nie posiadasz żadnych zadań</span></a>
+        </li>
+
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

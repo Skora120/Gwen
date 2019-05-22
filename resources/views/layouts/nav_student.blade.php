@@ -16,6 +16,7 @@
         Moje przedmioty
     </div>
 
+    @if(!empty($w_subjects[0]))
     @foreach($w_subjects as $subject)
         <li class="nav-item">
             <a class="nav-link" href="{{$subject->group->subject->path}}">
@@ -30,6 +31,14 @@
             <span class="font-weight-bold">Pokaż wszystkie</span></a>
     </li>
 
+    @else
+        <li class="nav-item">
+            <a class="nav-link" href="/">
+                <i class="fas fa-fw fa-graduation-cap"></i>
+                <span class="font-weight-bold">Nie należysz do żadnej grupy</span></a>
+        </li>
+    @endif
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -37,7 +46,7 @@
     <div class="sidebar-heading">
         Moje zadania
     </div>
-
+    @if(!empty($w_tasks))
     @foreach($w_tasks as $task)
         <li class="nav-item">
             <a class="nav-link" href="{{$task->path}}">
@@ -51,6 +60,13 @@
             <i class="fas fa-fw fa-meteor"></i>
             <span class="font-weight-bold">Zobacz wszystkie</span></a>
     </li>
+    @else
+        <li class="nav-item">
+            <a class="nav-link" href="/">
+                <i class="fas fa-fw fa-graduation-cap"></i>
+                <span class="font-weight-bold">Aktualnie nie masz żadnych zadań</span></a>
+        </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

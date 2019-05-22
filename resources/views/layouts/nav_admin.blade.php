@@ -62,6 +62,12 @@
             <span>Statystyki</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="/admin">
+            <i class="fas fa-user-cog"></i>
+            <span>Panel zarządzania</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
