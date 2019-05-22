@@ -16,14 +16,6 @@
         Moje przedmioty
     </div>
 
-    {{--@foreach($w_subjects as $subject)--}}
-        {{--<li class="nav-item">--}}
-            {{--<a class="nav-link" href="{{$subject->group->subject->path}}">--}}
-                {{--<i class="fas fa-fw fa-graduation-cap"></i>--}}
-                {{--<span>{{$subject->group->subject->name}}</span></a>--}}
-        {{--</li>--}}
-    {{--@endforeach--}}
-
     <li class="nav-item">
         <a class="nav-link" href="/subjects">
             <i class="fas fa-fw fa-graduation-cap"></i>
@@ -37,14 +29,6 @@
     <div class="sidebar-heading">
         Moje zadania
     </div>
-
-    {{--@foreach($w_tasks as $task)--}}
-        {{--<li class="nav-item">--}}
-            {{--<a class="nav-link" href="{{$task->path}}">--}}
-                {{--<i class="fas fa-fw fa-meteor"></i>--}}
-                {{--<span>{{$task->name}}</span></a>--}}
-        {{--</li>--}}
-    {{--@endforeach--}}
 
     <li class="nav-item">
         <a class="nav-link" href="/tasks">

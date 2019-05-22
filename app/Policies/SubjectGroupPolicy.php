@@ -19,7 +19,7 @@ class SubjectGroupPolicy
      */
     public function view(User $user, SubjectGroup $subjectGroup)
     {
-        if ($subjectGroup->subject->user_id == $user->id)
+        if ($subjectGroup->subject->user_id == $user->id || $user->isAdmin())
             return true;
 
         return $subjectGroup->isUserInGroup($user);
@@ -60,7 +60,7 @@ class SubjectGroupPolicy
      */
     public function update(User $user, SubjectGroup $subjectGroup)
     {
-        return $subjectGroup->subject->user_id == $user->id;
+        return $subjectGroup->subject->user_id == $user->id || $user->isAdmin();
     }
 
     /**

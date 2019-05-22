@@ -21,12 +21,16 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::where('user_id', auth()->id())->get();
-
+        $user = auth()->user();
+        $subjects = [];
+        if($user->isLecturer()) {
+            $subjects = $user->ownedSubjects()->orderBy('updated_at', 'desc')->paginate(10);
+        }else{
+            $subjects = $user->subjects()->orderBy('updated_at', 'desc')->paginate(10);
+        }
         if(request()->isJson()){
             return $subjects;
         }
-
 
         return view('subjects.index', ['subjects' => $subjects]);
     }
@@ -87,8 +91,7 @@ class SubjectsController extends Controller
                 return !empty($value->users[0]);
             });
         }else{
-//            $userGroups = $subject->subject_groups()->get();
-            $userGroups = $subject->subject_groups()->get();
+            $userGroups = $subject->subject_groups()->paginate(10);
         }
 
         if(\request()->isJson()){

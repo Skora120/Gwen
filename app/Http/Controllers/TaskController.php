@@ -92,7 +92,7 @@ class TaskController extends Controller
             'description' => 'required',
             'startDate' => 'date|after_or_equal:now -1 hour',
             'deadline' => 'required|date|after:startDate',
-            'max_mark' => 'required|numeric',
+            'max_mark' => 'required|numeric|gt:0',
         ]);
 
         $task = Task::create([
@@ -129,7 +129,7 @@ class TaskController extends Controller
             'description' => 'required',
             'startDate' => 'date|after_or_equal:now -1 hour',
             'deadline' => 'required|date|after:startDate',
-            'max_mark' => 'required|numeric',
+            'max_mark' => 'required|numeric|gt:0',
             'groups' => 'required'
         ]);
 

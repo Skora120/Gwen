@@ -69,7 +69,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="max_mark">Max Mark</label>
-                                <input type="number" class="form-control" name="max_mark">
+                                <input type="number" class="form-control" name="max_mark" value="{{$task->max_mark}}">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

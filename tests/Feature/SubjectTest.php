@@ -48,13 +48,13 @@ class SubjectTest extends TestCase
     /** @test */
     public function a_lecturer_can_see_his_subjects()
     {
-        $lecturer = factory('App\User')->create();
+        $lecturer = factory('App\User')->state('lecturer')->create();
         $this->be($lecturer);
 
-        $subject = factory('App\Subject')->create(['user_id' => auth()->id()]);
+        $subject = factory('App\Subject')->create(['user_id' => $lecturer->id]);
 
 
-        $this->get('/subjects')->assertSee($subject->description);
+        $this->get('/subjects')->assertSee($subject->name);
     }
 
     /** @test */

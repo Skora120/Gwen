@@ -33,7 +33,7 @@
         <li class="nav-item">
             <a class="nav-link" href="/subjects">
                 <i class="fas fa-fw fa-graduation-cap"></i>
-                <span class="font-weight-bold">Nie posiadasz żadnych przedmiotów</span></a>
+                <span class="font-weight-bold">Nie posiadasz żadnych przedmiotów, kliknij aby utworzyć</span></a>
         </li>
     @endif
 
