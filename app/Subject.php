@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     protected $guarded = [];
+    protected $appends = ['path'];
 
     public function getRouteKeyName()
     {
