@@ -49,6 +49,10 @@ class SubjectGroupUsersController extends Controller
 
         $group = SubjectGroup::where('code', $request->code)->firstOrFail();
 
+        if(SubjectGroupUser::where('group_id', $group->id)->where('user_id', auth()->id())->exists()){
+            return redirect()->back()->with('error', 'Należysz już do tej grupy!');
+        }
+
         $this->authorize('join', $group);
 
 

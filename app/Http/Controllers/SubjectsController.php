@@ -87,7 +87,7 @@ class SubjectsController extends Controller
         if(auth()->user()->isStudent()) {
             $userGroups = $subject->subject_groups()->with(['users' => function($q){
                 $q->where('user_id', auth()->id());
-            }])->get()->filter(function ($value) {
+            }])->paginate(10)->filter(function ($value) {
                 return !empty($value->users[0]);
             });
         }else{

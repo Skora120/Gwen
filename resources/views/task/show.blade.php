@@ -1,108 +1,103 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{$task->name}}</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">{{$task->name}}</h6>
+                    </div>
                     <div class="card-body">
                         <p>
-                            {{$task->description}}
+                            Opis: {{$task->description}}
                         </p>
                         <p>
-                            {{$task->startDate}}
+                            Czas rozpoczęcia: {{$task->startDate}}
                         </p>
                         <p>
-                            {{$task->deadline}}
+                            Czas zakończenia: {{$task->deadline}}
                         </p>
                         <p>
-                            {{$task->max_mark}}
+                            Maksymalna Ocena: {{$task->max_mark}}
                         </p>
                     </div>
                 </div>
 
-                <hr>
-                <div class="card">
-                    <div class="card-header">Your Submissions</div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Odpowiedzi na zadania</h6>
+                    </div>
+                    <div class="card-body">
+                        @if(!auth()->user()->isStudent())
+                            <form action="{{$task->path}}" method="POST">
+                                {{method_field('PATCH')}}
+                                {{csrf_field()}}
+                                <div class="form-group">
+                                    <label for="name">Nazwa</label>
+                                    <input type="text" class="form-control" name="name" value="{{$task->name}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Opis</label>
+                                    <textarea name="description" class="form-control" rows="6">{{$task->description}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="startDate">Czas rozpoczęcia</label>
+                                    <input type="text" class="form-control" name="startDate" value="{{$task->startDate}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="deadline">Czas zakończenia</label>
+                                    <input type="text" class="form-control" name="deadline" value="{{$task->deadline}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="max_mark">Maksymalna Ocena</label>
+                                    <input type="number" class="form-control" name="max_mark" value="{{$task->max_mark}}">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        @else
+                            <form action="{{$task->path()}}" method="POST" enctype="multipart/form-data">
+                                {{csrf_field()}}
+                                <div class="form-group">
+                                    <label for="s_comment">Dodatkowy komentarz</label>
+                                    <textarea name="s_comment" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="file">Załącznik <small>(pdf,zip,cpp)</small></label>
+                                    <input type="file" class="form-control-file" name="file">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Wyślij</button>
+                            </form>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Odpowiedzi na zadania</h6>
+                    </div>
                     <div class="card-body">
                         @forelse($submissions as $userSubmissions)
                             <div>
-                            <p>{{$userSubmissions[0]->user->name}}</p>
-                            @forelse($userSubmissions as $key => $submission)
+                                <p>{{$userSubmissions->user->name}} <small>{{$userSubmissions->created_at->diffForHumans()}}</small></p>
+                                <p>{{$userSubmissions->s_comment}}</p>
+                                <p>Ocena: {{$userSubmissions->mark? $userSubmissions->mark: 'Brak'}}</p>
+                                <a href="{{url()->current()}}/submissions/{{$userSubmissions->id}}">Przejdź do odpowiedzi</a>
 
-                                <p>{{$submission->created_at->diffForHumans()}} <a href="{{url()->current()}}/submissions/{{$submission->id}}">{{$submission->s_comment}}</a></p>
-
-                            @empty
                             </div>
                             <hr>
-                            @endforelse
                         @empty
                             <div>
-                                <p>You don't have any submissions for this task</p>
+                                <p>Aktualnie nie ma odpowiedzi na to zadanie</p>
                             </div>
                         @endforelse
+
+                        {{$submissions->links()}}
                     </div>
                 </div>
-
-                <hr>
-                <div class="card">
-                    <div class="card-header">Update Task</div>
-                    <div class="card-body">
-                        <form action="{{$task->path()}}" method="POST">
-                            {{method_field('PATCH')}}
-                            {{csrf_field()}}
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" name="name" value="{{$task->name}}">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="description" class="form-control">{{$task->description}}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="startDate">Start Time</label>
-                                <input type="text" class="form-control" name="startDate" value="{{$task->startDate}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="deadline">End Time</label>
-                                <input type="text" class="form-control" name="deadline" value="{{$task->deadline}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="max_mark">Max Mark</label>
-                                <input type="number" class="form-control" name="max_mark" value="{{$task->max_mark}}">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-
-                        <pre>{{$errors}}</pre>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <div class="card-header">Submission Form</div>
-                    <div class="card-body">
-                        <form action="{{$task->path()}}" method="POST" enctype="multipart/form-data">
-                            {{csrf_field()}}
-                            <div class="form-group">
-                                <label for="s_comment">Additional Comment</label>
-                                <textarea name="s_comment" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="file">File input</label>
-                                <input type="file" class="form-control-file" name="file">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-
-                        <pre>{{$errors}}</pre>
-                    </div>
-                </div>
-
-                <hr>
             </div>
         </div>
-
-
     </div>
 @endsection

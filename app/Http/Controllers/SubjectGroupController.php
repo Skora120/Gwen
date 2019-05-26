@@ -80,7 +80,10 @@ class SubjectGroupController extends Controller
             return response($group);
         }
 
-        return view('subjects_groups.show', ['group' => $group]);
+        $users =  $group->users()->with('user')->paginate(10);
+        $tasks = $group->tasks()->paginate(5);
+
+        return view('subjects_groups.show', compact('users', 'tasks', 'group'));
     }
 
     /**

@@ -166,7 +166,12 @@ class TaskController extends Controller
             return $task->getOriginal();
         }
 
-        return view('task.show', ['task' => $task, 'submissions' => $task->submissions->load('user')->groupBy('user_id')]);
+        if(auth()->user()->isStudent()){
+            $submission = $task->submissions()->where('user_id', auth()->id())->paginate(3);
+        }else {
+            $submission = $task->submissions()->with('user')->paginate(15);
+        }
+        return view('task.show', ['task' => $task, 'submissions' => $submission]);
     }
 
     /**

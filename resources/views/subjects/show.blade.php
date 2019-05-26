@@ -35,8 +35,9 @@
                         </ul>
                     </div>
                     <div class="mx-auto">
-
+                       @if(isset($userGroups[0]->perPage))
                         {{$userGroups->links()}}
+                        @endif
                     </div>
                 </div>
             </div>

@@ -66,7 +66,7 @@ class SubjectGroupsTest extends TestCase
         $this->be($user);
 
         $this->post(route('subject-join'), ['code' => $group->code])->assertRedirect($group->path());
-        $this->post(route('subject-join'), ['code' => $group->code])->assertStatus(403);
+        $this->post(route('subject-join'), ['code' => $group->code])->assertSessionHas('error');
     }
 
     /** @test */

@@ -48,6 +48,7 @@ class SubjectGroupPolicy
         if ($user->id == $subjectGroup->subject()->value('user_id'))
             return false;
 
+
         return !$subjectGroup->isUserInGroup($user);
     }
 

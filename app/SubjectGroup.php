@@ -24,6 +24,12 @@ class SubjectGroup extends Model
         return $result;
     }
 
+    public function getPathAttribute()
+    {
+        return $this->path();
+    }
+
+
     public function subject()
     {
         return $this->hasOne(Subject::class, 'id', 'subject_id');
