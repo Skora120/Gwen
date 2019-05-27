@@ -86,17 +86,4 @@ class AdministratorPanelTest extends TestCase
 
         $this->get('/admin/subjects/')->assertSee($subjects[0]->name)->assertSee($subjects[5]->name);
     }
-
-    /** @test */
-    public function an_admin_may_see_all_student_submissions()
-    {
-        $this->be(factory('App\User')->state('admin')->create());
-        $submission = factory('App\Submission')->create();
-
-        $user = $submission->user;
-
-        $this->get('/admin/users/'. $user->id .'/submissions')->assertSee($submission->task->name);
-    }
-
-
 }
