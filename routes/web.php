@@ -20,7 +20,6 @@ Route::group(['prefix' => '/admin'],function() {
 
     Route::get('/users/{user}', 'Admin\AdminUsersController@show');
     Route::patch('/users/{user}', 'Admin\AdminUsersController@update');
-    Route::get('/users/{user}/submissions', 'Admin\AdminSubmissionsController@index');
     Route::get('/users', 'Admin\AdminUsersController@index');
 
     Route::get('/subjects', 'Admin\AdminSubjectsController@index');
@@ -72,6 +71,7 @@ Route::group(['prefix' => '/subjects'],function() {
                     Route::patch('/{submission}', 'SubmissionController@update');
                     Route::delete('/{submission}', 'SubmissionController@destroy');
                     Route::get('/{submission}/download', 'SubmissionController@download');
+                    Route::get('/{submission}/preview', 'SubmissionController@preview');
                 });
             });
         });

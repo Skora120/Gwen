@@ -174,8 +174,27 @@ class SubmissionController extends Controller
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      * @throws \Exception
      */
+    public function preview(Subject $subject, SubjectGroup $group, Task $task, Submission $submission)
+    {
+        $this->authorize('view', [$submission, $subject]);
+
+        return response()->download(storage_path('app/' . $submission->file),   bin2hex(random_bytes(2)) . '.'. $submission->file_extension, [], 'inline');
+    }
+
+    /**
+     * Download file from submission
+     *
+     * @param Subject $subject
+     * @param SubjectGroup $group
+     * @param Task $task
+     * @param Submission $submission
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @throws \Exception
+     */
     public function download(Subject $subject, SubjectGroup $group, Task $task, Submission $submission)
     {
-        return response()->download(storage_path('app/' . $submission->file),   bin2hex(random_bytes(2)) . '.'. $submission->file_extension, [], 'inline');
+        $this->authorize('view', [$submission, $subject]);
+
+        return response()->download(storage_path('app/' . $submission->file),   bin2hex(random_bytes(2)) . '.'. $submission->file_extension, []);
     }
 }

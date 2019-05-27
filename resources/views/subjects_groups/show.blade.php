@@ -36,22 +36,47 @@
                                 <div class="form-group">
                                     <label for="name">Nazwa zadania</label>
                                     <input type="text" class="form-control" name="name">
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Opis</label>
                                     <textarea class="form-control" name="description"></textarea>
+                                    @if ($errors->has('description'))
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Czas rozpoczęcia</label>
-                                    <input type="text" class="form-control" name="startDate">
+                                    <input type="text" class="form-control" name="startDate" placeholder="YYYY-MM-DD HH:MM:SS">
+                                    @if ($errors->has('startDate'))
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                        <strong>{{ $errors->first('startDate') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Czas zakończenia</label>
-                                    <input type="text" class="form-control" name="deadline">
+                                    <input type="text" class="form-control" name="deadline" placeholder="YYYY-MM-DD HH:MM:SS">
+                                    @if ($errors->has('deadline'))
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                        <strong>{{ $errors->first('deadline') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="max_mark">Maksymalna ocena</label>
                                     <input type="number" class="form-control" name="max_mark">
+                                    @if ($errors->has('max_mark'))
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                        <strong>{{ $errors->first('max_mark') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Dodaj</button>
@@ -82,8 +107,8 @@
                         <ul class="list-group list-group-flush">
                             @forelse($users as $key => $value)
                                 <li class="list-group-item"><p>{{$value->user->name}}</p>
-                                    @if(!auth()->user()->isStudent() and $value->user->student_id != null)
-                                        <small>id studenta:{{$value->user->student_id}}</small>
+                                    @if(!auth()->user()->isStudent())
+                                        <small>Id studenta: {{$value->user->student_id ? $value->user->student_id : 'nie podano'}}</small>
                                     @endif
                                     </li>
                             @empty

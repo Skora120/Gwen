@@ -22,7 +22,7 @@ class TaskPolicy
     public function view(User $user, Task $task)
     {
         $group = $task->group;
-        return $user->id == $group->owner()->id || $group->isUserInGroup($user);
+        return $user->id == $group->owner()->id || $group->isUserInGroup($user) || $user->isAdmin();
     }
 
     /**

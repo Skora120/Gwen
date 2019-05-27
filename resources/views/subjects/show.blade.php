@@ -61,9 +61,6 @@
             </div>
 
 
-
-
-
                 <div class="col-xl-6 col-lg-6">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -76,10 +73,20 @@
                                 <div class="form-group">
                                     <label for="name">Nazwa przedmiotu</label>
                                     <input type="text" class="form-control" name="name" value="{{$subject->name}}">
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Opisu</label>
                                     <textarea name="description" class="form-control">{{$subject->description}}</textarea>
+                                    @if ($errors->has('description'))
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <button type="submit" class="btn btn-primary">Zapisz</button>
                             </form>

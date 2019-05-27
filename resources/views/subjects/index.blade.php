@@ -36,10 +36,20 @@
                                 <div class="form-group">
                                     <label for="name">Nazwa przedmiotu</label>
                                     <input type="text" class="form-control" name="name">
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Opis przedmiotu</label>
                                     <textarea rows="7" name="description" class="form-control"></textarea>
+                                    @if ($errors->has('description'))
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                        <strong>{{ $errors->first('description') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="col-6 offset-3">
                                     <button type="submit" class="btn btn-block btn-primary">Zatwierdź</button>

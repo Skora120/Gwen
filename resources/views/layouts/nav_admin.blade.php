@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-fire"></i>
         </div>
@@ -9,48 +9,23 @@
     </a>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Moje przedmioty
-    </div>
+    <hr class="sidebar-divider d-none d-md-block">
 
     <li class="nav-item">
-        <a class="nav-link" href="/subjects">
-            <i class="fas fa-fw fa-graduation-cap"></i>
-            <span class="font-weight-bold">Pokaż wszystkie</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Moje zadania
-    </div>
-
-    <li class="nav-item">
-        <a class="nav-link" href="/tasks">
-            <i class="fas fa-fw fa-meteor"></i>
-            <span class="font-weight-bold">Zobacz wszystkie</span></a>
+        <a class="nav-link" href="/admin/users">
+            <i class="fas fa-user-cog"></i>
+            <span>Uzytkownicy</span></a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
-    <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="/statistics">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Statystyki</span></a>
+        <a class="nav-link" href="/admin/subjects">
+            <i class="fas fa-user-cog"></i>
+            <span>Przedmioty</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/admin">
-            <i class="fas fa-user-cog"></i>
-            <span>Panel zarządzania</span></a>
-    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

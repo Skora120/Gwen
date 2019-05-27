@@ -5,12 +5,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+                    <div class="card-header">Ustawienia</div>
                     <div class="card-body">
                         <form action="{{ url()->current() }}" method="POST">
                             {{method_field('PATCH')}}
                             {{csrf_field()}}
                             <div class="form-group">
-                                <label for="first_name">First name</label>
+                                <label for="first_name">Imię</label>
                                 <input type="text" class="form-control" name="first_name" placeholder="{{ auth()->user()->first_name  }}">
                                 @if ($errors->has('first_name'))
                                     <span class="invalid-feedback" role="alert" style="display: block;">
@@ -19,7 +20,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="last_name">Last name</label>
+                                <label for="last_name">Nazwisko</label>
                                 <input type="text" class="form-control" name="last_name" placeholder="{{ auth()->user()->last_name }}">
                                 @if ($errors->has('last_name'))
                                     <span class="invalid-feedback" role="alert" style="display: block;">
@@ -67,10 +68,10 @@
                             </div>
                             @endif
                             <button type="submit" class="btn btn-primary">Submit</button>
-
-                            <pre>{{ printf($errors) }}</pre>
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
 @endsection

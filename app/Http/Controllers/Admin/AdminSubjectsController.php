@@ -20,6 +20,6 @@ class AdminSubjectsController extends Controller
      */
     public function index()
     {
-        return view('admin.subject.index', ['subjects' => Subject::paginate(15)]);
+        return view('admin.subject.index', ['subjects' => Subject::with('user')->paginate(15)]);
     }
 }

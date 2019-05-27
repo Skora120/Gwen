@@ -17,21 +17,19 @@
                             Komentarz oceniającego: {{$submission->r_comment}}
                         </p>
                         <p>
-                            Ocena: {{$submission->mark}}
+                            Ocena: {{$submission->mark ? $submission->mark : ' Brak'}}
                         </p>
                         <p>
-                            Załącznik: <a href="{{$submission->path()}}/download">plik</a>
+                            Załącznik: <a href="{{$submission->path()}}/download">Pobierz</a>
                         </p>
                         <div>
-                            <p>Podgląd</p>
                             @if ($submission->file_extension != 'zip')
-                                <iframe src="{{$submission->path()}}/download" type="application/pdf">
-                                    <span>Your browser does not support iframes.</span>
-                                </iframe>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Podgląd</button>
                             @else
-                                <p><a href="{{$submission->path()}}/download">Download Zip file</a></p>
+                                <p><a href="{{$submission->path()}}/preview">Pobierz plik zip</a></p>
                             @endif
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -73,4 +71,26 @@
         </div>
         @endif
     </div>
+
+    <!-- Large modal -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <iframe src="{{$submission->path()}}/preview" type="application/pdf" width="100%" style="height: 75vh;">
+                        <span>Your browser does not support iframes.</span>
+                    </iframe>
+
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a href="{{$submission->path()}}/download"><button type="button" class="btn btn-secondary" onclick="download()">Pobierz</button></a>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Zamknij</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

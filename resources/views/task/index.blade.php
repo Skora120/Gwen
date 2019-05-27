@@ -6,16 +6,16 @@
             <div class="col-md-8">
 
                 <div class="card">
-                    <div class="card-header">Tasks</div>
+                    <div class="card-header">Zadania</div>
                     <div class="card-body">
                         @forelse($tasks as $task)
                             <div>
-                                <p>Name: <a href="{{$task->path}}">{{$task->name}}</a></p>
-                                <p>Description: {{$task->description}}</p>
+                                <p>Nazwa: <a href="{{$task->path}}">{{$task->name}}</a></p>
+                                <p>Opis: {{substr($task->description,0,140)}}{{strlen($task->description) > 140 ? '...' : ''}}</p>
                             </div>
                             <hr>
                         @empty
-                            <p>There aren't any tasks</p>
+                            <p>Nie ma żadnych zadań</p>
                         @endforelse
 
                         {{ $tasks->links() }}

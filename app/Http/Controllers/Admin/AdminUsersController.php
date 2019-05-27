@@ -21,7 +21,7 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(50);
+        $users = User::orderBy('last_name', 'asc')->paginate(25);
 
         return view('admin.user.index', compact('users'));
     }
@@ -55,7 +55,8 @@ class AdminUsersController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.user.show', ['user' => $user]);
+        $submissions = $user->submissions()->paginate(15);
+        return view('admin.user.show', ['user' => $user, 'submissions' => $submissions]);
     }
 
     /**
