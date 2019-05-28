@@ -28,6 +28,13 @@
                             @else
                                 <p><a href="{{$submission->path()}}/preview">Pobierz plik zip</a></p>
                             @endif
+
+                            @if(auth()->user()->isAdmin())
+                            <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                    Usuń
+                                </button>
+                            @endif
                         </div>
 
                     </div>
@@ -92,5 +99,29 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    Czy aby na pewno chcesz usunąć odpowiedź na zadanie użytkownika '{{ $submission->user->name }}'?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                    <button type="button" class="btn btn-danger"  onclick="event.preventDefault();
+                                                         document.getElementById('delete-subject').submit();">Usuń</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="delete-subject" action="{{$submission->path}}" method="POST" style="display: none;">
+        @method('DELETE')
+        @csrf
+    </form>
 
 @endsection

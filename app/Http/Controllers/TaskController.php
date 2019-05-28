@@ -251,6 +251,6 @@ class TaskController extends Controller
         if(\request()->isJson()){
             return response(200);
         }
-        return redirect($task->path())->with('flash', 'Zadanie zostało usunięte pomyślnie!');
+        return redirect($group->path())->with('flash', 'Zadanie zostało usunięte pomyślnie!');
     }
 }

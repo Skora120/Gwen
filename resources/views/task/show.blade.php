@@ -6,7 +6,15 @@
             <div class="col-12 col-xl-6 col-lg-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">{{$task->name}}</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">{{$task->name}}
+                        @if(auth()->user()->isAdmin() || (auth()->user()->isLecturer() && empty($submissions[0])))
+                            <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#deleteModal">
+                                    Usuń zadanie
+                                </button>
+                            @endif
+
+                        </h6>
                     </div>
                     <div class="card-body">
                         <p>
@@ -133,4 +141,29 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    Czy aby na pewno chcesz usunąć zadanie '{{ $task->name }}'?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                    <button type="button" class="btn btn-danger"  onclick="event.preventDefault();
+                                                         document.getElementById('delete-subject').submit();">Usuń</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="delete-subject" action="{{$task->path}}" method="POST" style="display: none;">
+        @method('DELETE')
+        @csrf
+    </form>
+
 @endsection
