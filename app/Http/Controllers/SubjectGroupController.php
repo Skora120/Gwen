@@ -61,7 +61,7 @@ class SubjectGroupController extends Controller
             return response($group, 201);
         }
 
-        return redirect($group->path());
+        return redirect($group->path())->with('flash', 'Grupa została utworzona pomyślnie!');
     }
 
     /**
@@ -122,7 +122,7 @@ class SubjectGroupController extends Controller
             return response($group, 201);
         }
 
-        return redirect($group->path());
+        return redirect($group->path())->with('flash', 'Grupa zaktualizowany pomyślnie!');
     }
 
     /**

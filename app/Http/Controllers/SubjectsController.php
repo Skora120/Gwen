@@ -72,7 +72,7 @@ class SubjectsController extends Controller
             return response($subject, 201);
         }
 
-        return redirect($subject->path());
+        return redirect($subject->path())->with('flash', 'Przedmiot został utworzony pomyślnie!');
 
     }
 
@@ -139,7 +139,7 @@ class SubjectsController extends Controller
             return response($subject, 201);
         }
 
-        return redirect($subject->path());
+        return redirect($subject->path())->with('flash', 'Przedmiot zaktualizowany pomyślnie!');
     }
 
     /**
@@ -158,6 +158,6 @@ class SubjectsController extends Controller
         if(\request()->isJson()){
             return response(200);
         }
-        return redirect('/');
+        return redirect('/')->with('flash', 'Przedmiot został usunięty grupy!');
     }
 }

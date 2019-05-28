@@ -98,7 +98,7 @@ class AdminUsersController extends Controller
             'type'   => $request->type              ? $request->type                    : $user->type,
         ]);
 
-        return redirect()->back()->with('success', 'Profil zakutalizowany pomyślnie!');
+        return redirect()->back()->with('flash', 'Profil został zaktualizowany pomyślnie!');
     }
 
     /**

@@ -109,7 +109,7 @@ class TaskController extends Controller
             return response($task, 201);
         }
 
-        return redirect($task->path());
+        return redirect($task->path())->with('flash', 'Zadanie utworzone pomyślnie!');
     }
 
 
@@ -146,7 +146,7 @@ class TaskController extends Controller
                 'slug' => Task::generateUniqueSlug(Str::slug($request->name)),
             ]);
         }
-        return redirect($subject->path());
+        return redirect($subject->path())->with('flash', 'Zadania zostały utworzone pomyślnie!');
     }
 
     /**
@@ -229,7 +229,7 @@ class TaskController extends Controller
             return response($task->refresh(), 201);
         }
 
-        return redirect($task->refresh()->path());
+        return redirect($task->refresh()->path())->with('flash', 'Zadanie zostało zaktualizowane pomyślnie!');
     }
 
     /**
@@ -251,6 +251,6 @@ class TaskController extends Controller
         if(\request()->isJson()){
             return response(200);
         }
-        return redirect($task->path());
+        return redirect($task->path())->with('flash', 'Zadanie zostało usunięte pomyślnie!');
     }
 }

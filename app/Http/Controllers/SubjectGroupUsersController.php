@@ -50,7 +50,7 @@ class SubjectGroupUsersController extends Controller
         $group = SubjectGroup::where('code', $request->code)->firstOrFail();
 
         if(SubjectGroupUser::where('group_id', $group->id)->where('user_id', auth()->id())->exists()){
-            return redirect()->back()->with('error', 'Należysz już do tej grupy!');
+            return redirect()->back()->with('flash', 'Należysz już do tej grupy!');
         }
 
         $this->authorize('join', $group);
@@ -65,7 +65,7 @@ class SubjectGroupUsersController extends Controller
             return response($group, 201);
         }
 
-        return redirect($group->path());
+        return redirect($group->path())->with('flash', 'Profil został zaktualizowany pomyślnie!');
     }
 
     /**

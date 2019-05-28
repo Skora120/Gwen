@@ -88,6 +88,8 @@
                 @yield('content')
             </div>
 
+            {{--<example-component></example-component>--}}
+            <flash message="{{ session('flash') }}"></flash>
             <!-- End of Main Content -->
             <!-- Footer -->
             <footer class="sticky-footer bg-white">

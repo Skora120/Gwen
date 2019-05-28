@@ -24,6 +24,8 @@
                         <hr>
                     @endif
                 @endfor
+
+                {{session('level')}}
             </div>
         </div>
     </div>

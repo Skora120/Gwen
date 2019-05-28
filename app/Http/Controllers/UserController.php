@@ -51,6 +51,6 @@ class UserController extends Controller
             'password'   => $request->password      ? Hash::make($request->password)    : $user->password,
         ]);
 
-        return redirect()->back()->with('success', 'Profil zakutalizowany pomyślnie!');
+        return redirect()->back()->with('success', 'Profil zakutalizowany pomyślnie!')->with('flash', 'Profil został zaktualizowany!');
     }
 }

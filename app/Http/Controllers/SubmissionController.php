@@ -80,7 +80,7 @@ class SubmissionController extends Controller
             return response($submission);
         }
 
-        return redirect($submission->path());
+        return redirect($submission->path())->with('flash', 'Odpowiedź została dodana pomyślnie!');
     }
 
     /**
@@ -143,7 +143,7 @@ class SubmissionController extends Controller
         if($request->isJson()){
             return response($submission, 201);
         }
-        return redirect($submission->path());
+        return redirect($submission->path())->with('flash', 'Zadanie zostało ocenione pomyślnie!');;
     }
 
     /**
@@ -161,7 +161,7 @@ class SubmissionController extends Controller
         if(\request()->isJson()){
             return response(200);
         }
-        return redirect($task->path());
+        return redirect($task->path())->with('flash', 'Odpowiedź na zadanie została usunięta pomyślnie!');
     }
 
     /**
