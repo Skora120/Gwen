@@ -95,7 +95,7 @@ class AdminUsersController extends Controller
             'email'      => $request->email         ? $request->email                   : $user->email,
             'student_id' => $request->student_id    ? $request->student_id              : $user->student_id,
             'password'   => $request->password      ? Hash::make($request->password)    : $user->password,
-            'type'   => $request->type              ? $request->type                    : $user->type,
+            'type'   => $request->type != null             ? $request->type                    : $user->type,
         ]);
 
         return redirect()->back()->with('flash', 'Profil został zaktualizowany pomyślnie!');
