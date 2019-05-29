@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password', 'type', 'student_id'
     ];
 
     /**
@@ -36,4 +36,44 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getNameAttribute()
+    {
+        return ($this->first_name . ' ' . $this->last_name);
+    }
+
+    public function ownedSubjects()
+    {
+        return $this->hasMany('App\Subject');
+    }
+
+    public function subjectGroupUser()
+    {
+        return $this->hasMany('App\SubjectGroupUser');
+    }
+
+    public function subjects()
+    {
+        return $this->subjectGroupUser()->with('group.subject');
+    }
+
+    public function submissions()
+    {
+        return $this->hasMany('App\Submission');
+    }
+
+    public function isLecturer()
+    {
+        return $this->type == 1;
+    }
+
+    public function isStudent()
+    {
+        return $this->type == 0;
+    }
+
+    public function isAdmin()
+    {
+        return $this->type == 2;
+    }
 }
