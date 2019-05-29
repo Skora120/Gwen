@@ -62,7 +62,7 @@
             <div class="col-xl-6 col-lg-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Utwórz do grupy</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Utwórz grupę</h6>
                     </div>
                     <div class="card-body col-10 offset-1">
                         <form action="{{$subject->path()}}" method="POST" class="text-center">
