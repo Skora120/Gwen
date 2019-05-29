@@ -87,10 +87,11 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    @if($submission->extension == 'zip')
                     <iframe src="{{$submission->path()}}/preview" type="application/pdf" width="100%" style="height: 75vh;">
                         <span>Your browser does not support iframes.</span>
                     </iframe>
-
+                    @endif
                 </div>
                 <div class="modal-footer justify-content-center">
                     <a href="{{$submission->path()}}/download"><button type="button" class="btn btn-secondary" onclick="download()">Pobierz</button></a>

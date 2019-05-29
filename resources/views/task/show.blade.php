@@ -97,6 +97,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Dodaj odpowiedź na zadanie</h6>
                     </div>
                     <div class="card-body">
+                        @if($task->startDate < date(now()) && $task->deadline > date(now()))
                         <form action="{{$task->path()}}" method="POST" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="form-group">
@@ -109,6 +110,9 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Wyślij</button>
                         </form>
+                        @else
+                            <p>Do tego zadanie nie można dodać odpowiedzi, ponieważ zadanie się nie rozpoczeło / zakończyło się.</p>
+                        @endif
                     </div>
                 </div>
                 @endif

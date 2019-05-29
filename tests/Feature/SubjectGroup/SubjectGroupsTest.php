@@ -66,7 +66,9 @@ class SubjectGroupsTest extends TestCase
         $this->be($user);
 
         $this->post(route('subject-join'), ['code' => $group->code])->assertRedirect($group->path());
-        $this->post(route('subject-join'), ['code' => $group->code])->assertSessionHas('error');
+        $this->post(route('subject-join'), ['code' => $group->code]);
+
+        $this->assertEquals(1, $group->users()->where('user_id', $user->id)->count());
     }
 
     /** @test */
