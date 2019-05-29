@@ -62,7 +62,7 @@ class TaskPolicy
      */
     public function update(User $user, SubjectGroup $group)
     {
-        return $user->id == $group->owner()->id;
+        return $user->id == $group->owner()->id || $user->isAdmin();
     }
 
     /**
