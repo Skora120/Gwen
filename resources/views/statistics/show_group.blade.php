@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-8 col-lg-8">
+        <div class="col-xl-10 col-lg-10">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Statystyki - Oceny z zadań</h6>
@@ -14,6 +14,7 @@
                         <hr class="pt-5">
                         <p><a href="{{$task->path}}">Zadanie: {{$task->name}}</a>
 
+                        @if(!empty($task->submissions[0]))
                         <table class="table">
                             <thead>
                             <tr>
@@ -39,6 +40,9 @@
                             @endforeach
                             </tbody>
                         </table>
+                        @else
+                            <p>To zadanie nie pozada żadnych odpowiedzi.</p>
+                        @endif
                     @empty
                         <p>Ta grupa nie za żadnych zadań.</p>
                     @endforelse

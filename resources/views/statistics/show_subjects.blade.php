@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-8">
+            <div class="col-xl-10 col-lg-10">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Statystyki</h6>
@@ -17,7 +17,8 @@
                                 <th scope="col">Nazwa grupy</th>
                                 <th scope="col">Liczba osób</th>
                                 <th scope="col">Liczba zadań</th>
-                                <th scope="col">Link do grupy</th>
+                                <th scope="col">Strona groupy</th>
+                                <th scope="col">Statystyki grupy</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -28,6 +29,7 @@
                                     <td>{{$group->users_count}}</td>
                                     <td>{{$group->tasks_count}}</td>
                                     <td><a href="{{$group->path}}">Przejdz do grupy</a></td>
+                                    <td><a href="{{url()->current()}}/{{$group->id}}">Przejdz do statystyk</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -43,19 +45,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @endsection
