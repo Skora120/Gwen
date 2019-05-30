@@ -8,8 +8,8 @@
 
                     <div class="card-header">Statistics</div>
                     <div class="card-body">
-                        @forelse($groups as $group)
-                            <p><a href="{{ url()->current() }}/{{$group->id}}">{{$group->name}}</a> | {{$group->users_count}}</p>
+                        @forelse($groups as $key => $group)
+                            <p><a href="{{ url()->current() }}/{{$group->id}}">{{$group->name? $group->name : "Grupa: " .( string)($key+ 1)}}</a> | {{$group->users_count}}</p>
                         @empty
                             XD
                         @endforelse

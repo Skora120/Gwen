@@ -39,9 +39,8 @@ class StatisticsLecturerController extends Controller
 
         $tasks = $group->tasks()->withCount('allModelSubmissions')->with('submissions');
         $tasksCount = $tasks->count();
+        $tasks = $tasks->paginate(5);
 
-        $tasks = $tasks->get();
-
-        return view('statistics.show_group', compact(['tasks', 'tasksCount']));
+            return view('statistics.show_group', compact('tasks', 'tasksCount'));
     }
 }
