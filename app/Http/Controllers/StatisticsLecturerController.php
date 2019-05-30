@@ -22,7 +22,7 @@ class StatisticsLecturerController extends Controller
     {
         $this->authorize('update', $subject);
 
-        $groups = $subject->subject_groups()->withCount('users')->paginate(25);
+        $groups = $subject->subject_groups()->withCount('users', 'tasks')->paginate(25);
 
         return view('statistics.show_subjects', compact('groups'));
     }
