@@ -13,7 +13,7 @@
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Przedmioto</th>
+                            <th scope="col">Przedmioty</th>
                             <th scope="col">Imie i nazwisko prowadzacego</th>
                         </tr>
                         </thead>

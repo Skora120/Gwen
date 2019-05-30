@@ -21,7 +21,7 @@ class StatisticsController extends Controller
 
             return view('statistics.index_student', compact('submissions'));
         }else if(auth()->user()->isLecturer()){
-            $subjects = auth()->user()->ownedSubjects()->paginate(15);
+            $subjects = auth()->user()->ownedSubjects()->withCount('subject_groups')->paginate(15);
 
             return view('statistics.index_lecturer', compact('subjects'));
         }
