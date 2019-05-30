@@ -22,7 +22,7 @@ class StatisticsLecturerController extends Controller
     {
         $this->authorize('update', $subject);
 
-        $groups = $subject->subject_groups()->withCount('users')->paginate(25);
+        $groups = $subject->subject_groups()->withCount('users', 'tasks')->paginate(25);
 
         return view('statistics.show_subjects', compact('groups'));
     }
@@ -39,9 +39,8 @@ class StatisticsLecturerController extends Controller
 
         $tasks = $group->tasks()->withCount('allModelSubmissions')->with('submissions');
         $tasksCount = $tasks->count();
+        $tasks = $tasks->paginate(5);
 
-        $tasks = $tasks->get();
-
-        return view('statistics.show_group', compact(['tasks', 'tasksCount']));
+            return view('statistics.show_group', compact('tasks', 'tasksCount'));
     }
 }
