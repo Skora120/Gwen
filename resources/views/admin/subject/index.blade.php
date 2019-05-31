@@ -9,26 +9,27 @@
                     <h6 class="m-0 font-weight-bold text-primary">Panel Administratora</h6>
                 </div>
                 <div class="card-body text-center">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Przedmioty</th>
-                            <th scope="col">Imie i nazwisko prowadzacego</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach ($subjects as $key => $subject)
+                    <div class="table-responsive-sm">
+                        <table class="table">
+                            <thead>
                             <tr>
-                                <th scope="row">{{$key+1 + ($subjects->perPage() * ($subjects->currentPage() - 1))}}</th>
-                                <td><a href="{{$subject->path}}">{{$subject->name}}</a></td>
-                                <td><a href="/admin/users/{{$subject->user->id}}">{{$subject->user->name}}</a></td>
+                                <th scope="col">#</th>
+                                <th scope="col">Przedmioty</th>
+                                <th scope="col">Imie i nazwisko prowadzacego</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
 
+                            @foreach ($subjects as $key => $subject)
+                                <tr>
+                                    <th scope="row">{{$key+1 + ($subjects->perPage() * ($subjects->currentPage() - 1))}}</th>
+                                    <td><a href="{{$subject->path}}">{{$subject->name}}</a></td>
+                                    <td><a href="/admin/users/{{$subject->user->id}}">{{$subject->user->name}}</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="mx-auto pt-3">
                         {{ $subjects->links() }}
                     </div>
