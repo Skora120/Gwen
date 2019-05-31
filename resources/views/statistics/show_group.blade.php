@@ -15,31 +15,33 @@
                         <p><a href="{{$task->path}}">Zadanie: {{$task->name}}</a>
 
                         @if(!empty($task->submissions[0]))
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Wysyłający</th>
-                                <th scope="col">Ocena</th>
-                                <th scope="col">Maksymalna ocena</th>
-                                <th scope="col">% oceny</th>
-                                <th scope="col">Link do zadania</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            @foreach ($task->submissions as $key => $submission)
+                        <div class="table-responsive-md">
+                            <table class="table">
+                                <thead>
                                 <tr>
-                                    <th scope="row">{{$key+1}}</th>
-                                    <td>{{$submission->user->name}}</td>
-                                    <td>{{$submission->mark ? $submission->mark : "Brak"}}</td>
-                                    <td>{{$task->max_mark}}</td>
-                                    <td>{{ round($submission->mark / $task->max_mark, 2) * 100 . '%'}}</td>
-                                    <td><a href="{{$submission->path}}">Przejdz do zadania</a></td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Wysyłający</th>
+                                    <th scope="col">Ocena</th>
+                                    <th scope="col">Maksymalna ocena</th>
+                                    <th scope="col">% oceny</th>
+                                    <th scope="col">Link do zadania</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+
+                                @foreach ($task->submissions as $key => $submission)
+                                    <tr>
+                                        <th scope="row">{{$key+1}}</th>
+                                        <td>{{$submission->user->name}}</td>
+                                        <td>{{$submission->mark ? $submission->mark : "Brak"}}</td>
+                                        <td>{{$task->max_mark}}</td>
+                                        <td>{{ round($submission->mark / $task->max_mark, 2) * 100 . '%'}}</td>
+                                        <td><a href="{{$submission->path}}">Przejdz do zadania</a></td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         @else
                             <p>To zadanie nie pozada żadnych odpowiedzi.</p>
                         @endif

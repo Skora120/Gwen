@@ -10,28 +10,30 @@
                 </div>
                 <div class="card-body text-center">
                     @if(!empty($subjects[0]))
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nazwa przedmiotu</th>
-                                <th scope="col">Liczba grup</th>
-                                <th scope="col">Strona przedmiotu</th>
-                                <th scope="col">Statystyki przedmiotu</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($subjects as $key => $subject)
+                        <div class="table-responsive-md">
+                            <table class="table">
+                                <thead>
                                 <tr>
-                                    <th scope="row">{{$key+1 + ($subjects->perPage() * ($subjects->currentPage() - 1))}}</th>
-                                    <td>{{$subject->name}}</td>
-                                    <td>{{$subject->subject_groups_count}}</td>
-                                    <td><a href="{{$subject->path}}">Przejdz do przedmiotu</a></td>
-                                    <td><a href="{{url()->current()}}/subjects/{{$subject->slug}}">Statystyki przedmiotu</a></td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nazwa przedmiotu</th>
+                                    <th scope="col">Liczba grup</th>
+                                    <th scope="col">Strona przedmiotu</th>
+                                    <th scope="col">Statystyki przedmiotu</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($subjects as $key => $subject)
+                                    <tr>
+                                        <th scope="row">{{$key+1 + ($subjects->perPage() * ($subjects->currentPage() - 1))}}</th>
+                                        <td>{{$subject->name}}</td>
+                                        <td>{{$subject->subject_groups_count}}</td>
+                                        <td><a href="{{$subject->path}}">Przejdz do przedmiotu</a></td>
+                                        <td><a href="{{url()->current()}}/subjects/{{$subject->slug}}">Statystyki przedmiotu</a></td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="mx-auto pt-3">
                             {{$subjects->links()}}
                         </div>
